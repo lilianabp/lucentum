@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+@import "variables.scss";
+
+.btn-transparent{
+  background: transparent;
+  border: none;
+  &:hover, &:focus{
+    background: transparent;
+    border: none;
+  }
+}
+
+.notification-block{
+  .notification-text{
+    padding-left: 10px;
+    display: inline-flex;
+  }
+
+  form{
+    display: inline-flex;
+  }
+}
+=======
+@import "variables";
+>>>>>>> 49a71ac66f3e3b662d36cc2203add68402a2304a

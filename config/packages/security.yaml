@@ -1,0 +1,108 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+#        App\Entity\User:
+#            algorithm: bcrypt
+
+    providers:
+
+        fos_userbundle:
+            id: fos_user.user_provider.username
+#        your_db_provider:
+#            entity:
+#                class: App\Entity\User
+#                property: username
+
+    role_hierarchy:
+        ROLE_SONATA_ADMIN:
+            - ROLE_USER
+
+        ROLE_ADMIN:
+            - ROLE_SONATA_ADMIN
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_CREATE
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_LIST
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_EDIT
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_DELETE
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_SHOW
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_EXPORT
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_BATCH
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_CKEDITOR_BROWSER
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_CKEDITOR_UPLOAD
+            #CONTACT ADMIN
+            - ROLE_ADMIN_CONTACT_LIST
+            - ROLE_ADMIN_CONTACT_DELETE
+            - ROLE_ADMIN_CONTACT_EXPORT
+            - ROLE_ADMIN_CONTACT_OPERATOR
+            - ROLE_ADMIN_CONTACT_VIEW
+            - ROLE_ADMIN_CONTACT_CREATE
+            - ROLE_ADMIN_CONTACT_EDIT
+
+        ROLE_SUPER_ADMIN:
+            - ROLE_ADMIN
+            - ROLE_SONATA_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
+            - ROLE_ADMIN_USER_LIST
+            - ROLE_ADMIN_USER_CREATE
+            - ROLE_ADMIN_USER_EDIT
+            - ROLE_ADMIN_USER_DELETE
+            - ROLE_ADMIN_USER_EXPORT
+            - ROLE_ADMIN_USER_OPERATOR
+            - ROLE_ADMIN_USER_VIEW
+            - ROLE_ADMIN_USER_MASTER
+        SONATA:
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT # si no está usando acl, entonces esta línea debe estar descomentada
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            pattern:            /admin(.*)
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   /admin/login
+                default_target_path: /admin/dashboard
+                always_use_default_target_path: true
+            logout:
+                path:           /admin/logout
+                target:         /admin/login
+                invalidate_session: true
+            anonymous: true
+            switch_user: true
+
+        # -> end custom configuration
+
+        # default login area for standard users
+
+        # This firewall is used to handle the public login area
+        # This part is handled by the FOS User Bundle
+        main:
+            pattern:             .*
+            context:             user
+            http_basic: ~
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    true
+                check_path:     /login_check
+                failure_path:   /login
+            logout:             true
+            anonymous:          true
+
+    access_control:
+        # Admin login page needs to be accessed without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

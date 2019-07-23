@@ -1,0 +1,38 @@
+{#{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}#}
+
+{#{% sonata_template_deprecate '@SonataAdmin/CRUD/Association/show_many_to_one.html.twig' %}#}
+
+{#{% block field %}#}
+    {#<ul class="sonata-ba-show-many-to-many">#}
+        {#{% set route_name = field_description.options.route.name %}#}
+        {#{% set total_infringerments = 0 %}#}
+        {#<li class="row-infringements">#}
+            {#<strong>Detalle</strong>#}
+            {#<div class="price-infringements">#}
+                {#<strong>#}
+                    {#Precio#}
+                {#</strong>#}
+            {#</div>#}
+        {#</li>#}
+        {#{% for element in value %}#}
+            {#<li class="row-infringements">#}
+                {#{% if field_description.hasassociationadmin#}
+                    {#and field_description.associationadmin.hasRoute(route_name)#}
+                    {#and field_description.associationadmin.hasAccess(route_name, element) %}#}
+                    {#<a href="{{ field_description.associationadmin.generateObjectUrl(route_name, element, field_description.options.route.parameters) }}">#}
+                        {#{{ element|render_relation_element(field_description) }}#}
+                    {#</a>#}
+                    {#<div class="price-infringements">#}
+                        {#$ {{ element.price|render_relation_element(field_description) }}#}
+                    {#</div>#}
+                {#{% else %}#}
+                    {#{{ element|render_relation_element(field_description) }}#}
+                {#{% endif %}#}
+            {#</li>#}
+            {#{% set total_infringerments = total_infringerments + element.price %}#}
+        {#{% endfor %}#}
+    {#</ul>#}
+    {#<div class="total-infringements">#}
+        {#$ {{ total_infringerments }}#}
+    {#</div>#}
+{#{% endblock %}#}

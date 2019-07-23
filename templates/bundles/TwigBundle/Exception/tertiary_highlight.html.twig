@@ -1,0 +1,26 @@
+<div class="card-group">
+    {% for post in posts %}
+        {% if post.slugType == 'articulo' %}
+            {% set path = path('article_by_id', {'slugCategory': post.category[0].slugCategory , 'slug': post.slug }) %}
+        {% elseif post.slugType == 'storie' %}
+            {% set path = path('storie_by_id', {'slugCategory': post.category[0].slugCategory , 'slug': post.slug }) %}
+        {% else %}
+            {% set path = path('wikinuren_by_id', {'slugCategory': post.category[0].slugCategory , 'slug': post.slug }) %}
+        {% endif %}
+        <a href="{{ path }}" class="col-lg-4 col-sm-6 col-12 px-sm-0 px-lg-0 mx-lg-1 my-lg-2 my-sm-2 mx-sm-1 py-sm-0 p-2 card">
+            <div class="section-post">
+                <div class="img-post-cover" style='background-image: url("{{ asset('uploads/image/article/'~ post.imagePath) }}")' title="{{ post.alt }}">
+                    {% if post.slugtype == 'storie' %}
+                        <img src="{{ asset('assets/images/ICONO-PLAY.svg') }}" class="icon-play">
+                    {% endif %}
+                </div>
+                <div class="home-text-post p-lg-3 px-sm-2 pt-sm-3 pb-sm-2 p-2">
+                    <div class="title-post-standard">
+                        {{ post.title }}
+                    </div>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
+</div>

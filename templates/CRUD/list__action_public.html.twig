@@ -1,0 +1,11 @@
+{% if object.public == 0 %}
+    <a class="btn btn-sm btn-danger view_link" href="{{ admin.generateObjectUrl('public', object) }}">
+        {#<i class="fa fa-times" aria-hidden="true"></i>#}
+        No publicado
+    </a>
+{% elseif object.public == 1 %}
+    <a class="btn btn-sm btn-success view_link" href="{{ admin.generateObjectUrl('public', object) }}">
+        {#<i class="fa fa-check" aria-hidden="true"></i>#}
+        Publicado
+    </a>
+{% endif %}

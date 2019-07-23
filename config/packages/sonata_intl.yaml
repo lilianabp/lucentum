@@ -1,0 +1,5 @@
+sonata_intl:
+    timezone:
+        locales:
+            es: Europe/Madrid
+        default: Europe/Madrid

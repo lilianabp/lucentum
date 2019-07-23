@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block primary_content %}
+    <div class="col-12 px-sm-1 px-0 mt-sm-2 mt-0">
+        <div class="row error-page mx-0 p-3 p-sm-0">
+            <div class="col-lg-8 col-sm-8 col-12 mx-auto pb-lg-4 pt-lg-5 py-sm-5 px-0 text-center">
+                <img src="{{ asset('assets/images/404.svg') }}" alt="404 - error" class="img-fluid img-404 pb-lg-4 pb-sm-3 py-sm-0 px-sm-5 p-4 text-center">
+                <h3 class="title-standard">
+                    Lo sentimos, parece que no encontramos la página que estas buscando, pero quizás te interese alguno de nuestros últimos stories.
+                </h3>
+            </div>
+        </div>
+    </div>
+    {% if is_mobile() and not is_tablet() %}
+        <div class="col-12 px-0 mt-2">
+            {{ render(controller('App\\Controller\\NewsletterController:newsletterForm')) }}
+        </div>
+        <div class="col-12 px-2 pt-2">
+            {{ render(controller('App\\Controller\\BannerController:bannerWebinar')) }}
+        </div>
+    {% endif %}
+    <!--{#titulo stories home#}-->
+    <div class="col-lg-12 mx-0 px-0">
+        <div class="bg-white mx-sm-1 pt-lg-4 bg-error">
+            {{ render(controller('App\\Controller\\ErrorController:lastStories', {'mobile':2, 'tablet': 2, 'full': 3})) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% if not is_mobile() or is_tablet() %}
+        <div class="col-lg-12 col-sm-12 px-lg-1 px-sm-1 pt-sm-2 pt-lg-0">
+            {{ render(controller('App\\Controller\\NewsletterController:newsletterForm')) }}
+        </div>
+        <div class="col-lg-12 col-sm-12 px-lg-1 pt-lg-2 px-sm-1 pt-sm-2">
+            {{ render(controller('App\\Controller\\BannerController:bannerWebinar')) }}
+        </div>
+    {% endif %}
+{% endblock %}

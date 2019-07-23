@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400");
+@import url("https://fonts.googleapis.com/css?family=Domine:700");
+.btn-transparent {
+  background: transparent;
+  border: none; }
+  .btn-transparent:hover, .btn-transparent:focus {
+    background: transparent;
+    border: none; }
+
+.notification-block .notification-text {
+  padding-left: 10px;
+  display: inline-flex; }
+.notification-block form {
+  display: inline-flex; }
+
+/*# sourceMappingURL=admin.css.map */

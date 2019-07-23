@@ -1,0 +1,3 @@
+sonata_translation:
+    locales: ['en', 'es']
+    default_locale: 'en'

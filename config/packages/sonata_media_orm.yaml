@@ -1,0 +1,7 @@
+sonata_media:
+    class:
+        media: App\Application\Sonata\MediaBundle\Entity\Media
+        gallery: App\Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+        category: App\Application\Sonata\ClassificationBundle\Entity\Category
+    db_driver: doctrine_orm

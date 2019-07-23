@@ -1,0 +1,57 @@
+sonata_admin:
+    title: 'Admin'
+#    title_logo: 'assets/images/svg/Facicon-Lasarias-01.png'
+    dashboard:
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+        groups:
+            sonata_user:
+                label: Usuarios
+                icon: '<i class="fa fa-user-o"></i>'
+            Contactos:
+                icon: '<i class="fa fa-phone"></i>'
+            sonata_media:
+                label: Multimedia
+                icon: '<i class="fa fa-picture-o"></i>'
+            Noticias:
+                icon: '<i class="fa fa-picture-o"></i>'
+    templates:
+        dashboard: '@SonataAdmin/Core/dashboard.html.twig'
+        user_block: 'Block\user_menu.html.twig'
+        layout: 'Block\standard_layout.html.twig'
+        search: '@SonataAdmin/Core/search.html.twig'
+    security:
+        handler: sonata.admin.security.handler.role
+
+        role_admin: ROLE_ADMIN
+        role_super_admin: ROLE_SUPER_ADMIN
+
+    search: true
+    options:
+        enable_jms_di_extra_autoregistration: true
+    assets:
+        extra_javascripts:
+            # ...
+            - bundles/fosckeditor/ckeditor.js
+            - bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js
+            - bundles/sonataformatter/markitup/sets/markdown/set.js
+            - bundles/sonataformatter/markitup/sets/html/set.js
+            - bundles/sonataformatter/markitup/sets/textile/set.js
+
+        extra_stylesheets:
+            # ...
+            - bundles/sonataformatter/markitup/skins/sonata/style.css
+            - bundles/sonataformatter/markitup/sets/markdown/style.css
+            - bundles/sonataformatter/markitup/sets/html/style.css
+            - bundles/sonataformatter/markitup/sets/textile/style.css
+            - bundles/sonatatranslation/css/sonata-translation.css
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        # Your other blocks
+        sonata_translation.block.locale_switcher: ~
+        sonata.formatter.block.formatter: ~
+        sonata.admin.block.search_result:
+            contexts: [admin]

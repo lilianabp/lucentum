@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400");
+@import url("https://fonts.googleapis.com/css?family=Domine:700");
+@media (min-width: 576px) and (max-width: 1099.98px) {
+  .container {
+    max-width: 720px; } }
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1280px; } }
+html, body {
+  font-family: "Roboto", sans-serif;
+  color: #666666; }
+
+.wrapper {
+  width: 100%; }
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+/*# sourceMappingURL=main.css.map */
