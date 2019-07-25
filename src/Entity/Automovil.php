@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use App\Application\Sonata\MediaBundle\Entity\Gallery;
+use App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
+use App\Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AutomovilRepository")
@@ -72,21 +76,25 @@ class Automovil
     private $descripcion;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $fecha_alta;
 
     /**
+     * @Gedmo\Timestampable(on="change", field="estado.id", value="2")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $fecha_reserva;
 
     /**
+     * @Gedmo\Timestampable(on="change", field="estado.id", value="1")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $fecha_venta;
 
     /**
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $fecha_modificacion;
@@ -100,6 +108,23 @@ class Automovil
      * @ORM\ManyToOne(targetEntity="App\Entity\Estado", inversedBy="automoviles")
      */
     private $estado;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $imagen_destacada;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     */
+    private $video;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery", cascade={"persist", "remove"})
+     */
+    private $galeria;
+
 
     public function getId(): ?int
     {
@@ -309,4 +334,41 @@ class Automovil
 
         return $this;
     }
+
+    public function getImagenDestacada(): ?Media
+    {
+        return $this->imagen_destacada;
+    }
+
+    public function setImagenDestacada(Media $imagen_destacada): self
+    {
+        $this->imagen_destacada = $imagen_destacada;
+
+        return $this;
+    }
+
+    public function getVideo(): ?Media
+    {
+        return $this->video;
+    }
+
+    public function setVideo(?Media $video): self
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    public function getGaleria(): ?Gallery
+    {
+        return $this->galeria;
+    }
+
+    public function setGaleria(?Gallery $galeria): self
+    {
+        $this->galeria = $galeria;
+
+        return $this;
+    }
+    
 }

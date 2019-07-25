@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "bes/mobiledetect-twig-extension": {
         "version": "v1.0.3"
     },
@@ -125,6 +128,9 @@
     },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v2.4.37"
     },
     "guzzlehttp/psr7": {
         "version": "1.5.2"
@@ -431,6 +437,18 @@
     },
     "sonata-project/user-bundle": {
         "version": "4.3.0"
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
     },
     "suncat/mobile-detect-bundle": {
         "version": "1.0",

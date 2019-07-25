@@ -16,7 +16,6 @@ final class EstadoAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('id')
             ->add('nombre')
             ;
     }
@@ -24,7 +23,6 @@ final class EstadoAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('id')
             ->add('nombre')
             ->add('_action', null, [
                 'actions' => [
@@ -38,7 +36,6 @@ final class EstadoAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('id')
             ->add('nombre')
             ;
     }

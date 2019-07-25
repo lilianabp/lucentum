@@ -44,4 +44,5 @@ return [
     Sonata\NewsBundle\SonataNewsBundle::class => ['all' => true],
     App\Application\Sonata\NewsBundle\ApplicationSonataNewsBundle::class => ['all' => true],
     App\Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle::class => ['all' => true],
+    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
 ];
