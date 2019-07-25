@@ -44,12 +44,68 @@ services:
         class: App\Admin\PostAdmin
         arguments: [~, App\Application\Sonata\NewsBundle\Entity\Post, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Noticias, label: Post, on_top: true }
+            - { name: sonata.admin, manager_type: orm, group: Novedades, label: Noticias }
         public: true
 
     admin.tag:
         class: App\Admin\TagAdmin
         arguments: [~, App\Application\Sonata\ClassificationBundle\Entity\Tag, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Tag }
+            - { name: sonata.admin, manager_type: orm, group: Novedades, label: Etiquetas }
+        public: true
+
+    admin.collection:
+        class: App\Admin\CollectionAdmin
+        arguments: [~, App\Application\Sonata\ClassificationBundle\Entity\Collection, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Novedades, label: Categorías }
+        public: true
+
+    admin.comment:
+        class: App\Admin\CommentAdmin
+        arguments: [~, App\Application\Sonata\NewsBundle\Entity\Comment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Novedades, label: Comentarios }
+        public: true
+
+    admin.marca:
+        class: App\Admin\MarcaAdmin
+        arguments: [~, App\Entity\Marca, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Marca }
+        public: true
+
+    admin.estado:
+        class: App\Admin\EstadoAdmin
+        arguments: [~, App\Entity\Estado, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Estado }
+        public: true
+
+    admin.condicion:
+        class: App\Admin\CondicionAdmin
+        arguments: [~, App\Entity\Condicion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Condicion }
+        public: true
+
+    admin.combustible:
+        class: App\Admin\CombustibleAdmin
+        arguments: [~, App\Entity\Combustible, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Combustible }
+        public: true
+
+    admin.cambio:
+        class: App\Admin\CambioAdmin
+        arguments: [~, App\Entity\Cambio, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Cambio }
+        public: true
+
+    admin.automovil:
+        class: App\Admin\AutomovilAdmin
+        arguments: [~, App\Entity\Automovil, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Automóviles, label: Automóviles, on_top: true }
         public: true

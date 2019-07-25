@@ -1,19 +1,32 @@
 sonata_admin:
     title: 'Admin'
-#    title_logo: 'assets/images/svg/Facicon-Lasarias-01.png'
+    title_logo: 'assets/images/logo-admin.jpg'
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
         groups:
+            Automóviles:
+            Contactos:
+                icon: '<i class="fa fa-phone"></i>'
+            Configuraciones:
+                items:
+                    - admin.marca
+                    - admin.estado
+                    - admin.condicion
+                    - admin.combustible
+                    - admin.cambio
+            Novedades:
+                items:
+                    - admin.post
+                    - admin.tag
+                    - admin.collection
+                    - admin.comment
+                icon: '<i class="fa fa-tag"></i>'
             sonata_user:
                 label: Usuarios
                 icon: '<i class="fa fa-user-o"></i>'
-            Contactos:
-                icon: '<i class="fa fa-phone"></i>'
             sonata_media:
                 label: Multimedia
-                icon: '<i class="fa fa-picture-o"></i>'
-            Noticias:
                 icon: '<i class="fa fa-picture-o"></i>'
     templates:
         dashboard: '@SonataAdmin/Core/dashboard.html.twig'
@@ -29,6 +42,7 @@ sonata_admin:
     search: true
     options:
         enable_jms_di_extra_autoregistration: true
+        mosaic_background: 'assets/images/background.jpg'
     assets:
         extra_javascripts:
             # ...
