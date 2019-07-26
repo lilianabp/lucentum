@@ -16,7 +16,6 @@ final class MarcaAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('id')
             ->add('nombre')
             ->add('descripcion')
             ;
@@ -25,7 +24,6 @@ final class MarcaAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('id')
             ->add('nombre')
             ->add('descripcion')
             ->add('_action', null, [
@@ -40,7 +38,6 @@ final class MarcaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('id')
             ->add('nombre')
             ->add('descripcion')
             ;

@@ -109,3 +109,59 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Automóviles, label: Automóviles, on_top: true }
         public: true
+
+    admin.context:
+        class: App\Admin\ContextAdmin
+        arguments: [~, App\Application\Sonata\ClassificationBundle\Entity\Context, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Configuraciones, label: Contexto }
+        public: true
+
+    admin.contacto:
+        class: App\Admin\ContactoAdmin
+        arguments: [~, App\Entity\Contacto, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Contacto }
+        public: true
+
+    admin.datos_empresa:
+        class: App\Admin\DatosEmpresaAdmin
+        arguments: [~, App\Entity\DatosEmpresa, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: DatosEmpresa }
+        public: true
+
+    admin.listado_automovil:
+        class: App\Admin\ListadoAutomovilAdmin
+        arguments: [~, App\Entity\ListadoAutomovil, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Automoviles }
+        public: true
+
+    admin.servicio:
+        class: App\Admin\ServicioAdmin
+        arguments: [~, App\Entity\Servicio, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Servicios, label: Servicios, on_top: true }
+        public: true
+
+    admin.listado_servicio:
+        class: App\Admin\ListadoServicioAdmin
+        arguments: [~, App\Entity\ListadoServicio, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Servicios }
+        public: true
+
+    admin.newsletter:
+        class: App\Admin\NewsletterAdmin
+        arguments: [~, App\Entity\Newsletter, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Newsletter, label: Newsletter, on_top: true }
+        public: true
+
+    admin.home:
+        class: App\Admin\HomeAdmin
+        arguments: [~, App\Entity\Home, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Home }
+        public: true

@@ -14,3 +14,6 @@
   display: inline-flex; }
 
 /*# sourceMappingURL=admin.css.map */
+.login-box .login-logo img { width: 100%!important; }
+.logo img { max-width: 100%!important; }
+.main-header .logo { text-align: left!important }

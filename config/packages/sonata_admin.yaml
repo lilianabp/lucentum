@@ -1,13 +1,11 @@
 sonata_admin:
-    title: 'Admin'
-    title_logo: 'assets/images/logo-admin.jpg'
+    title: ' '
+    title_logo: 'assets/images/logoCompleto.png'
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
-        groups:
+        groups: 
             Automóviles:
-            Contactos:
-                icon: '<i class="fa fa-phone"></i>'
             Configuraciones:
                 items:
                     - admin.marca
@@ -15,6 +13,8 @@ sonata_admin:
                     - admin.condicion
                     - admin.combustible
                     - admin.cambio
+                    - admin.context
+            Servicios:
             Novedades:
                 items:
                     - admin.post
@@ -22,6 +22,16 @@ sonata_admin:
                     - admin.collection
                     - admin.comment
                 icon: '<i class="fa fa-tag"></i>'
+            Contactos:
+                icon: '<i class="fa fa-phone"></i>'
+            Newsletter:
+            Contenido de Secciones:
+                items:
+                    - admin.home 
+                    - admin.datos_empresa
+                    - admin.listado_automovil
+                    - admin.listado_servicio
+                    - admin.contacto
             sonata_user:
                 label: Usuarios
                 icon: '<i class="fa fa-user-o"></i>'

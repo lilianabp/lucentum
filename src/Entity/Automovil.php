@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Application\Sonata\MediaBundle\Entity\Gallery;
 use App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use App\Application\Sonata\MediaBundle\Entity\Media;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -124,6 +126,36 @@ class Automovil
      * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery", cascade={"persist", "remove"})
      */
     private $galeria;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Automovil", inversedBy="relacionados")
+     */
+    private $automovil;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Automovil", mappedBy="automovil")
+     */
+    private $relacionados;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $destacado;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $oferta;
+
+    public function __toString() {
+        return $this->getMarca().' '.$this->getModelo();
+    }
+
+    public function __construct()
+    {
+        $this->relacionados = new ArrayCollection();
+        $this->automovil = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -367,6 +399,84 @@ class Automovil
     public function setGaleria(?Gallery $galeria): self
     {
         $this->galeria = $galeria;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getAutomovil(): Collection
+    {
+        return $this->automovil;
+    }
+
+    public function addAutomovil(self $automovil): self
+    {
+        if (!$this->automovil->contains($automovil)) {
+            $this->automovil[] = $automovil;
+        }
+
+        return $this;
+    }
+
+    public function removeAutomovil(self $automovil): self
+    {
+        if ($this->automovil->contains($automovil)) {
+            $this->automovil->removeElement($automovil);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getRelacionados(): Collection
+    {
+        return $this->relacionados;
+    }
+
+    public function addRelacionado(self $relacionado): self
+    {
+        if (!$this->relacionados->contains($relacionado)) {
+            $this->relacionados[] = $relacionado;
+            $relacionado->addAutomovil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelacionado(self $relacionado): self
+    {
+        if ($this->relacionados->contains($relacionado)) {
+            $this->relacionados->removeElement($relacionado);
+            $relacionado->removeAutomovil($this);
+        }
+
+        return $this;
+    }
+
+    public function getDestacado(): ?bool
+    {
+        return $this->destacado;
+    }
+
+    public function setDestacado(bool $destacado): self
+    {
+        $this->destacado = $destacado;
+
+        return $this;
+    }
+
+    public function getOferta(): ?bool
+    {
+        return $this->oferta;
+    }
+
+    public function setOferta(bool $oferta): self
+    {
+        $this->oferta = $oferta;
 
         return $this;
     }

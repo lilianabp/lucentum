@@ -17,6 +17,7 @@ use App\Entity\Cambio;
 use App\Entity\Combustible;
 use App\Entity\Condicion;
 use App\Entity\Estado;
+use App\Entity\Automovil;
 
 final class AutomovilAdmin extends AbstractAdmin
 {
@@ -100,6 +101,8 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('color')
             ->add('plazas')
             ->add('puertas')
+            ->add('anio', null, ['label' => 'Año'])
+            ->add('kilometraje')
         ->end()
         ->with('Detalles', ['class' =>'col-md-4'])
             ->add('estado', EntityType::class, [
@@ -111,8 +114,7 @@ final class AutomovilAdmin extends AbstractAdmin
                 'choice_label' => 'nombre',
             ])
             ->add('precio')
-            ->add('anio', null, ['label' => 'Año'])
-            ->add('kilometraje')
+            ->add('oferta')
             ->add('descripcion', CKEditorType::class, array(
                 'config' => array(
                     'uiColor' => '',
@@ -122,9 +124,13 @@ final class AutomovilAdmin extends AbstractAdmin
         ->end()
         ->with('Multimedia', ['class' =>'col-md-4'])
             ->add('imagen_destacada', ModelListType::class, $imagen)
+            ->add('destacado')
             ->add('video', ModelListType::class, $video)
             ->add('galeria', ModelListType::class, $galeria)
         ->end()
+        ->add('relacionados', EntityType::class, [
+            'class' => Automovil::class,
+        ])
             ;
     }
 
