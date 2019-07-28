@@ -16,4 +16,13 @@ class NovedadesController extends AbstractController
             'controller_name' => 'NovedadesController',
         ]);
     }
+
+        /**
+	* @Route("/novedades/{title}", name="post")
+    */
+    public function show() {
+    	return $this->render('novedades/show.html.twig', [
+            'controller_name' => 'NovedadesController',
+        ]);	
+    }
 }

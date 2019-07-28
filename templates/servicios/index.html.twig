@@ -1,20 +1,219 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServiciosController!{% endblock %}
+{% block title %}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/lucentum/src/Controller/ServiciosController.php'|file_link(0) }}">src/Controller/ServiciosController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/lucentum/templates/servicios/index.html.twig'|file_link(0) }}">templates/servicios/index.html.twig</a></code></li>
-    </ul>
+{% block content %}
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Services</h1>
+            <ul class="breadcrumbs">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Services</li>
+            </ul>
+        </div>
+    </div>
 </div>
+<!-- Sub Banner end -->
+
+<!-- Services start -->
+<div class="services content-area">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title text-center">
+            <h1>Our Services</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-speed"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Super Fast</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-wheel"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Oil Change</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-air-conditioner"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>AIR conditioning</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-car-2"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Dealership</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-motor"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Repairing</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-deal"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Trusted Agents</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-lock"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Security</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon">
+                        <i class="flaticon-support-2"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Free Support</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services end -->
+
+<!-- Testimonial start -->
+<div class="testimonial bg-grea-3 content-area-5">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>Testimonial</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+        </div>
+        <!-- Slick slider area start -->
+        <div class="slick-slider-area">
+            <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                <div class="slick-slide-item">
+                    <div class="testimonial-inner">
+                        <div class="text-box">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span>( 4 Reviews )</span>
+                            </div>
+                        </div>
+                        <div class="user">
+                            <div class="photo">
+                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                            </div>
+                            <div class="detail">
+                                <h5>Maikel Alisa</h5>
+                                <p>Web Designer, New York</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="testimonial-inner">
+                        <div class="text-box">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span>( 4 Reviews )</span>
+                            </div>
+                        </div>
+
+                        <div class="user">
+                            <div class="photo">
+                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                            </div>
+                            <div class="detail">
+                                <h5>Maikel Alisa</h5>
+                                <p>Creative Director, New York</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="testimonial-inner">
+                        <div class="text-box">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span>( 4 Reviews )</span>
+                            </div>
+                        </div>
+
+                        <div class="user">
+                            <div class="photo">
+                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                            </div>
+                            <div class="detail">
+                                <h5>Auro Navanth</h5>
+                                <p>Office Manager, New York</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="slick-prev slick-arrow-buton">
+                <i class="fa fa-angle-left"></i>
+            </div>
+            <div class="slick-next slick-arrow-buton">
+                <i class="fa fa-angle-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial end -->
 {% endblock %}
