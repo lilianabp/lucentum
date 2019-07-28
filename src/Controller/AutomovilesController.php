@@ -16,4 +16,13 @@ class AutomovilesController extends AbstractController
             'controller_name' => 'AutomovilesController',
         ]);
     }
+
+    /**
+	* @Route("/automoviles/{marca}-{modelo}", name="automovil")
+    */
+    public function show() {
+    	return $this->render('automoviles/show.html.twig', [
+            'controller_name' => 'AutomovilesController',
+        ]);
+    }
 }
