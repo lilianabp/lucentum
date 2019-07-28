@@ -116,10 +116,6 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('precio')
             ->add('oferta')
             ->add('descripcion', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '',
-                    //...
-                )
             ))
         ->end()
         ->with('Multimedia', ['class' =>'col-md-4'])

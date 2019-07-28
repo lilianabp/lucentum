@@ -30,11 +30,6 @@ class Home
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $video;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $titulo_grid_automoviles;
 
     /**
@@ -138,6 +133,12 @@ class Home
      */
     private $metadescription;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $video;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,17 +168,6 @@ class Home
         return $this;
     }
 
-    public function getVideo(): ?string
-    {
-        return $this->video;
-    }
-
-    public function setVideo(string $video): self
-    {
-        $this->video = $video;
-
-        return $this;
-    }
 
     public function getTituloGridAutomoviles(): ?string
     {
@@ -427,6 +417,18 @@ class Home
     public function setMetadescription(string $metadescription): self
     {
         $this->metadescription = $metadescription;
+
+        return $this;
+    }
+
+    public function getVideo(): ?Media
+    {
+        return $this->video;
+    }
+
+    public function setVideo(Media $video): self
+    {
+        $this->video = $video;
 
         return $this;
     }
