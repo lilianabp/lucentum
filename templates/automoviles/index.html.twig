@@ -136,252 +136,48 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% for automovil in automoviles  %}
                     <div class="col-lg-6 col-md-6">
                         <div class="car-box">
                             <div class="car-thumbnail">
                                 <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
+                                    {% if automovil.destacado %}
+                                        <div class="tag">Destacado</div>
+                                    {% endif %}
+                                    <div class="price-box">€{{ automovil.precio }}</div>
                                     <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
                                 </a>
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="car-grid-rightside.html">Toyota Prius</a>
+                                    <a href="car-grid-rightside.html">{{ automovil.marca }} {{automovil.modelo}}</a>
                                 </h1>
                                 <div class="location">
                                     <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
+                                        <i class="flaticon-pin"></i>Ctra. de Agost, 128, 03690 Sant Vicent del Raspeig, Alacant
                                     </a>
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>
-                                        <i class="flaticon-way"></i> 4,000 km
+                                        <i class="flaticon-way"></i> {{ automovil.kilometraje }} km
                                     </li>
                                     <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
+                                        <i class="flaticon-manual-transmission"></i> {{ automovil.cambio }}
                                     </li>
                                     <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
+                                        <i class="flaticon-calendar-1"></i> {{ automovil.anio }}
                                     </li>
                                     <li>
-                                        <i class="flaticon-fuel"></i> Petrol
+                                        <i class="flaticon-fuel"></i> {{ automovil.combustible }}
                                     </li>
                                     <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
+                                        <i class="flaticon-car"></i> {{ automovil.color }}
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">Toyota Prius specs</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> 4,000 km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">Lexus GS F</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> 4,000 km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">Hyundai Santa</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> 4,000 km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">Audi Q7 2018</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> 4,000 km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag">Featured</div>
-                                    <div class="price-box">$850.00</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">2017 Ford Mustang</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> 4,000 km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> Manual
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> 2019
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> Sport
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-gear"></i> Blue
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
                 <!-- Page navigation start -->
                 <div class="pagination-box text-center">

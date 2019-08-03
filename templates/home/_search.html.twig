@@ -1,0 +1,27 @@
+{{ form_start(form, {'action': path('buscarmiautomovil'), 'method': 'POST'}) }}
+<div class="inline-search-area isa-2 ml-auto mr-auto none-768">
+    <div class="row row-3">
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            {{ form_widget(form.marca) }}
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            {{ form_widget(form.modelo, {'attr': {'class': 'form-control', 'placeholder': 'Modelo', 'style': 'border-right: solid 1px #e0e0e0 !important'}}) }}
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            {{ form_widget(form.combustible) }}
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            {{ form_widget(form.cambio) }}
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            {{ form_widget(form.anio, {'attr': {'class': 'form-control', 'placeholder': 'Año', 'style': 'border-right: solid 1px #e0e0e0 !important'}}) }}
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
+            <button class="btn button-theme btn-search btn-block">
+                <i class="fa fa-search"></i><strong>Buscar</strong>
+            </button>
+        </div>
+       
+    </div>
+</div>
+{{ form_end(form, {'render_rest': false} ) }}

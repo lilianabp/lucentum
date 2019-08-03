@@ -22,29 +22,67 @@ class AutomovilRepository extends ServiceEntityRepository
     // /**
     //  * @return Automovil[] Returns an array of Automovil objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function searchByAttr($query)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder('a');
+            
+        if ($query['marca']) {
+            $qb->andWhere('a.marca = :marca')
+               ->setParameter(':marca', $query['marca']);
+        }
 
-    /*
-    public function findOneBySomeField($value): ?Automovil
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        if ($query['modelo']) {
+            $qb->andWhere('a.modelo LIKE :modelo')
+               ->setParameter(':modelo', '%'.$query['modelo'].'%');
+        }
+
+        if ($query['combustible']) {
+            $qb->andWhere('a.combustible = :combustible')
+               ->setParameter(':combustible', $query['combustible']);
+        }
+
+        if ($query['cambio']) {
+            $qb->andWhere('a.cambio = :cambio')
+               ->setParameter(':cambio', $query['cambio']);
+        }
+
+        if ($query['anio']) {
+            $qb->andWhere('a.anio = :anio')
+               ->setParameter(':anio', $query['anio']);
+        }
+
+        $qb->andWhere('a.estado = :estado')
+            ->setParameter(':estado', 3)
+            ->andWhere('a.activo = :activo')
+            ->setParameter(':activo', 1);
+
+        return $qb->getQuery()
+                ->getResult()
         ;
     }
-    */
+    
+
+    
+    public function getOfertasDestacados($attr)
+    {
+        $qb = $this->createQueryBuilder('a');
+        if($attr == 'destacado'){
+            $qb->andWhere('a.destacado = :destacado')
+            ->setParameter('destacado', 1);
+        } else {
+            $qb->andWhere('a.oferta = :oferta')
+            ->setParameter('oferta', 1);
+        }
+        
+        $qb->andWhere('a.estado = :estado')
+            ->setParameter(':estado', 3)
+            ->andWhere('a.activo = :activo')
+            ->setParameter(':activo', 1);
+
+        return $qb->getQuery()
+                ->getResult()
+        ;
+    }
+    
 }

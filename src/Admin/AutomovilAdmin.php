@@ -26,9 +26,15 @@ final class AutomovilAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
+            ->add('marca')
             ->add('modelo')
+            ->add('destacado')
+            ->add('oferta')
+            ->add('cambio')
+            ->add('combustible')
+            ->add('estado')
             ->add('precio')
-            ->add('anio')
+            ->add('anio', null, ['label' => 'Año'])
             ->add('kilometraje')
             ->add('color')
             ->add('plazas')
@@ -44,14 +50,17 @@ final class AutomovilAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
+            ->add('marca')
             ->add('modelo')
+            ->add('destacado')
+            ->add('cambio')
+            ->add('combustible')
+            ->add('estado')
             ->add('precio')
-            ->add('anio')
-            ->add('kilometraje')
+            ->add('oferta')
+            ->add('anio', null, ['label' => 'Año'])
             ->add('color')
-            ->add('plazas')
-            ->add('puertas')
-            ->add('fecha_alta')
+            ->add('activo')
             ->add('fecha_reserva')
             ->add('fecha_venta')
             ->add('_action', null, [
@@ -92,11 +101,11 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('modelo')
             ->add('cambio', EntityType::class, [
                 'class' => Cambio::class,
-                'choice_label' => 'nombre',
+                'choice_label' => 'tipo',
             ])
             ->add('combustible', EntityType::class, [
                 'class' => Combustible::class,
-                'choice_label' => 'nombre',
+                'choice_label' => 'tipo',
             ])
             ->add('color')
             ->add('plazas')
@@ -126,6 +135,7 @@ final class AutomovilAdmin extends AbstractAdmin
         ->end()
         ->add('relacionados', EntityType::class, [
             'class' => Automovil::class,
+            'multiple'=> true,
         ])
             ;
     }
@@ -148,4 +158,9 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('fecha_modificacion')
             ;
     }
+
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 }

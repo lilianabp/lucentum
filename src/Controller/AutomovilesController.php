@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Automovil;
 
 class AutomovilesController extends AbstractController
 {
@@ -23,6 +26,18 @@ class AutomovilesController extends AbstractController
     public function show() {
     	return $this->render('automoviles/show.html.twig', [
             'controller_name' => 'AutomovilesController',
+        ]);
+    }
+
+    /**
+    * @Route("/buscar-mi-automovil", name="buscarmiautomovil")
+    */
+    public function search(Request $request, EntityManagerInterface $entityManager) {
+        $results = $entityManager->getRepository(Automovil::class)->searchByAttr($request->request->get('search'));
+
+        return $this->render('automoviles/index.html.twig', [
+            'controller_name' => 'AutomovilesController',
+            'automoviles' => $results,
         ]);
     }
 }

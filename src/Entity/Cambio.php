@@ -28,6 +28,10 @@ class Cambio
      */
     private $automoviles;
 
+    public function __toString() {
+        return $this->tipo;
+    }
+
     public function __construct()
     {
         $this->automoviles = new ArrayCollection();

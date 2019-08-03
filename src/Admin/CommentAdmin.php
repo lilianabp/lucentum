@@ -55,6 +55,7 @@ final class CommentAdmin extends AbstractAdmin
             ->add('email')
             ->add('message')
             ->add('status')
+            ->add('post', null, ['required' => false])
             ->add('createdAt')
             ->add('updatedAt')
             ->add('id')

@@ -147,6 +147,13 @@ class Automovil
      */
     private $oferta;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $activo;
+
+ 
+
     public function __toString() {
         return $this->getMarca().' '.$this->getModelo();
     }
@@ -156,7 +163,6 @@ class Automovil
         $this->relacionados = new ArrayCollection();
         $this->automovil = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -480,5 +486,18 @@ class Automovil
 
         return $this;
     }
+
+    public function getActivo(): ?bool
+    {
+        return $this->activo;
+    }
+
+    public function setActivo(bool $activo): self
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
     
 }
