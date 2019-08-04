@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 
 final class ListadoAutomovilAdmin extends AbstractAdmin
 {
@@ -39,8 +40,15 @@ final class ListadoAutomovilAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        $imagen = [
+            'btn_edit' => true,
+            'btn_delete' => true,
+            'btn_list' => false,
+            'label'=> 'Banner de encabezado',
+        ];
+
         $formMapper
-            ->add('id')
+            ->add('banner', ModelListType::class, $imagen)
             ->add('metatitle')
             ->add('metadescription')
             ;

@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+
+{% block title %}{{ content.metatitle }}{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="{{ content.metadescription}}">
+{% endblock %}
 
 {% block content %}
 <!-- Sub banner start -->
-<div class="sub-banner">
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Car Grid</h1>
+            <h1>Listado</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Car Grid</li>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="active">Automóviles</li>
             </ul>
         </div>
     </div>
@@ -24,97 +29,11 @@
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-left">
                     <!-- Advanced search start -->
-                    <div class="widget advanced-search2">
-                        <h3 class="sidebar-title">Search Cars</h3>
-                        <form method="GET">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-brand">
-                                    <option>Select Brand</option>
-                                    <option>Audi</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Nissan</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-make">
-                                    <option>Select Make</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Lamborghini</option>
-                                    <option>Sports Car</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-location">
-                                    <option>Select Location</option>
-                                    <option>United States</option>
-                                    <option>United Kingdom</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-year">
-                                    <option>Select Year</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-type">
-                                    <option>Select Type Of Car</option>
-                                    <option>New Car</option>
-                                    <option>Used Car</option>
-                                </select>
-                            </div>
-                            <div class="range-slider">
-                                <label>Price</label>
-                                <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <a class="show-more-options" data-toggle="collapse" data-target="#options-content">
-                                <i class="fa fa-plus-circle"></i> Other Features
-                            </a>
-                            <div id="options-content" class="collapse">
-                                <h3 class="sidebar-title">Brands</h3>
-                                <div class="checkbox checkbox-theme checkbox-circle">
-                                    <input id="checkbox2" type="checkbox">
-                                    <label for="checkbox2">
-                                        Audi
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-theme checkbox-circle">
-                                    <input id="checkbox3" type="checkbox">
-                                    <label for="checkbox3">
-                                        BMW
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-theme checkbox-circle">
-                                    <input id="checkbox4" type="checkbox">
-                                    <label for="checkbox4">
-                                        Honda
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-theme checkbox-circle">
-                                    <input id="checkbox1" type="checkbox">
-                                    <label for="checkbox1">
-                                        Lamborghini
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-theme checkbox-circle">
-                                    <input id="checkbox5" type="checkbox">
-                                    <label for="checkbox5">
-                                        Toyota
-                                    </label>
-                                </div>
-                                <br>
-                            </div>
-                            <div class="form-group mb-0">
-                                <button class="search-button">Search</button>
-                            </div>
-                        </form>
-                    </div>
+                    {% if request is defined %}
+                        {% include 'automoviles/advanced_search.html.twig' with {'form': searchForm, 'request': request } %}
+                    {% else %}
+                        {% include 'automoviles/advanced_search.html.twig' with {'form': searchForm} %}
+                    {% endif %}
                 </div>
             </div>
             <div class="col-lg-8 col-md-12">
@@ -124,17 +43,12 @@
                         <span class="sort">Sort by:</span>
                         <select class="selectpicker search-fields" name="default-order">
                             <option>Default Order</option>
-                            <option>Price High to Low</option>
-                            <option>Price: Low to High</option>
-                            <option>Newest Properties</option>
-                            <option>Oldest Properties</option>
+                            <option>Precio Descendente</option>
+                            <option>Precio Ascendente</option>
                         </select>
                     </div>
-                    <div class="sorting-options float-right">
-                        <a href="car-list-rightside.html" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
-                        <a href="car-grid-rightside.html" class="change-view-btn"><i class="fa fa-th-large"></i></a>
-                    </div>
                 </div>
+
                 <div class="row">
                     {% for automovil in automoviles  %}
                     <div class="col-lg-6 col-md-6">
@@ -184,21 +98,7 @@
                 {% endfor %}
                 </div>
                 <!-- Page navigation start -->
-                <div class="pagination-box text-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
-                            </li>
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                {{ knp_pagination_render(automoviles) }}
             </div>
         </div>
     </div>

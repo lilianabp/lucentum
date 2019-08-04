@@ -52,6 +52,16 @@ class AutomovilRepository extends ServiceEntityRepository
                ->setParameter(':anio', $query['anio']);
         }
 
+        if (array_key_exists('oferta', $query)) {
+            $qb->andWhere('a.oferta = :oferta')
+               ->setParameter(':oferta', 1);
+        }
+
+        if (array_key_exists('max_price', $query)) {
+            $qb->andWhere('a.precio < :max_price')
+               ->setParameter(':max_price', $query['max_price']);
+        }
+
         $qb->andWhere('a.estado = :estado')
             ->setParameter(':estado', 3)
             ->andWhere('a.activo = :activo')

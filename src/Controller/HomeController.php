@@ -10,6 +10,7 @@ use App\Entity\Automovil;
 use App\Entity\Home;
 use App\Entity\GoogleReview;
 use App\Application\Sonata\NewsBundle\Entity\Post;
+use App\Entity\DatosEmpresa;
 
 class HomeController extends AbstractController
 {
@@ -31,6 +32,16 @@ class HomeController extends AbstractController
             'ofertas' => $ofertas,
             'destacados' => $destacados,
             'comentarios' => $comentarios,
+            'posts' => $posts,
+        ]);
+    }
+
+     public function footer(EntityManagerInterface $entityManager)
+    {
+        $posts = $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], 3);
+        $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
+        return $this->render('partials/footer.html.twig', [
+            'datos' => $datos,
             'posts' => $posts,
         ]);
     }

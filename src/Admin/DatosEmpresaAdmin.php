@@ -44,11 +44,14 @@ final class DatosEmpresaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('id')
             ->add('direccion')
             ->add('email')
             ->add('telefono')
             ->add('movil')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('instagram')
+            ->add('linkedin')
             ;
     }
 

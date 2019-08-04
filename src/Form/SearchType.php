@@ -42,8 +42,6 @@ class SearchType extends AbstractType
                 'required' => false,
             ])
             ->add('precio', TextType::class, ['required' => false])
-            ->add('plazas', TextType::class, ['required' => false])
-            ->add('puertas', TextType::class, ['required' => false])
             ->add('cambio', EntityType::class, [
                 'class' => Cambio::class,
                 'choice_label' => 'tipo',
