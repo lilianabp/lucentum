@@ -28,6 +28,7 @@ sonata_admin:
             Contenido de Secciones:
                 items:
                     - admin.home 
+                    - admin.google_review
                     - admin.datos_empresa
                     - admin.listado_automovil
                     - admin.listado_servicio

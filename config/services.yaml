@@ -165,3 +165,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Home }
         public: true
+
+    admin.google_review:
+        class: App\Admin\GoogleReviewAdmin
+        arguments: [~, App\Entity\GoogleReview, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Opiniones de Google }
+        public: true

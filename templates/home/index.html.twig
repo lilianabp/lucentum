@@ -5,9 +5,10 @@
 {% block content %}
 
 <!-- Banner start -->
+
 <div class="banner banner_video_bg" id="banner">
     <div class="pattern-overlay">
-       {#  <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=5e0LxrLSzok',containment:'.banner_video_bg', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a> #}
+       <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v={{ home.video.providerReference }}',containment:'.banner_video_bg', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
     </div>
     <div id="bannerCarousole" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -15,9 +16,9 @@
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container banner-info">
                         <div class="text-center">
-                            <h3 class="text-uppercase">Welcome to Car Cmart</h3>
+                            <h3 class="text-uppercase">{{ home.title }}</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                {{ home.subtitle }}
                             </p>
                             {% include 'home/_search.html.twig' with {'form': searchForm} %}
                         </div>
@@ -29,407 +30,73 @@
 </div>
 <!-- Banner end -->
 
-<!-- Search area 3 start -->
-<div class="search-area-3 clearfix d-md-none d-lg-none d-xl-none">
-    <div class="container">
-        <div class="inline-search-area">
-            <div class="row row-3">
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <select class="selectpicker search-fields" name="any-status">
-                        <option>Any Status</option>
-                        <option>For Rent</option>
-                        <option>For Sale</option>
-                    </select>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <select class="selectpicker search-fields" name="all-type">
-                        <option>All Type</option>
-                        <option>Apartments</option>
-                        <option>Shop</option>
-                        <option>Restaurant</option>
-                        <option>Villa</option>
-                    </select>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <select class="selectpicker search-fields" name="bedrooms">
-                        <option>Bedrooms</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <select class="selectpicker search-fields" name="bathrooms">
-                        <option>Bathrooms</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <select class="selectpicker search-fields" name="location">
-                        <option>Location</option>
-                        <option>American</option>
-                        <option>Florida</option>
-                        <option>Belgium</option>
-                        <option>Canada</option>
-                    </select>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 search-col">
-                    <button class="btn button-theme btn-search btn-block">
-                        <i class="fa fa-search"></i><strong>Find</strong>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Search area 3 end -->
-
-<!-- Search Section start -->
-<div class="search-section search-area pb-hediin-12 bg-grea animated fadeInDown" id="search-style-1">
-    <div class="container">
-        <div class="search-section-area">
-            <div class="search-area-inner">
-                <div class="search-contents">
-                    <form method="GET">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="any-status">
-                                        <option>Any Status</option>
-                                        <option>For Rent</option>
-                                        <option>For Sale</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="all-type">
-                                        <option>All Type</option>
-                                        <option>Apartments</option>
-                                        <option>Shop</option>
-                                        <option>Restaurant</option>
-                                        <option>Villa</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bedrooms">
-                                        <option>Bedrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bathrooms">
-                                        <option>Bathrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="location">
-                                        <option>Location</option>
-                                        <option>American</option>
-                                        <option>Florida</option>
-                                        <option>Belgium</option>
-                                        <option>Canada</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <div class="form-group">
-                                    <button class="search-button">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Search Section end -->
-
 <!-- Featured car start -->
 <div class="featured-car content-area">
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Featured Cars</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>{{ home.tituloGridAutomoviles }}</h1>
+            <p>{{ home.subtituloGridAutomoviles}}</p>
         </div>
         <div class="row">
+            {% for automovil in destacados %}
             <div class="col-lg-4 col-md-6">
                 <div class="car-box">
                     <div class="car-thumbnail">
                         <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
+                            {% if automovil.destacado %}
+                                <div class="tag">Destacado</div>
+                            {% endif %}
+                            <div class="price-box">€{{ automovil.precio }}</div>
+                            {% if automovil.imagenDestacada %}
+                                <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
+                            {% else %}
+                                <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
+                            {% endif %}
                         </a>
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="car-grid-rightside.html">Toyota Prius</a>
+                            <a href="car-grid-rightside.html">{{ automovil.marca }} {{automovil.modelo}}</a>
                         </h1>
                         <div class="location">
                             <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
+                                <i class="flaticon-pin"></i>Ctra. de Agost, 128, 03690 Sant Vicent del Raspeig, Alacant
                             </a>
                         </div>
                         <ul class="facilities-list clearfix">
                             <li>
-                                <i class="flaticon-way"></i> 4,000 km
+                                <i class="flaticon-way"></i> {{ automovil.kilometraje }} km
                             </li>
                             <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
+                                <i class="flaticon-manual-transmission"></i> {{ automovil.cambio }}
                             </li>
                             <li>
-                                <i class="flaticon-calendar-1"></i> 2019
+                                <i class="flaticon-calendar-1"></i> {{ automovil.anio }}
                             </li>
                             <li>
-                                <i class="flaticon-fuel"></i> Petrol
+                                <i class="flaticon-fuel"></i> {{ automovil.combustible }}
                             </li>
                             <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
+                                <i class="flaticon-car"></i> {{ automovil.color }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">Toyota Prius specs</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> 4,000 km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> 2019
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> Petrol
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">Lexus GS F</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> 4,000 km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> 2019
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> Petrol
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">Hyundai Santa</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> 4,000 km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> 2019
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> Petrol
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">Audi Q7 2018</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> 4,000 km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> 2019
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> Petrol
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <div class="tag">Featured</div>
-                            <div class="price-box">$850.00</div>
-                            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">2017 Ford Mustang</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> 4,000 km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> Manual
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> 2019
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> Petrol
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> Sport
-                            </li>
-                            <li>
-                                <i class="flaticon-gear"></i> Blue
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
         </div>
     </div>
 </div>
 <!-- Featured car end -->
 
 <!-- advantages start -->
-<div class="advantages content-area">
+<div class="advantages content-area" style="background: rgba(0, 0, 0, 0.04) url({% path home.seoBanner, 'reference' %}) top left repeat!important">
     <div class="container">
         <!-- Main title -->
-        <div class="main-title-2 text-center">
-            <h1>Our Advantages</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+        <div class="main-title-2 text-center">    
+            <h1>{{ home.seoTitulo }}</h1>
+            <p>{{ home.seoSubtitulo }}</p>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -438,8 +105,8 @@
                         <i class="flaticon-shield"></i>
                     </div>
                     <div class="detail">
-                        <h5>Highly  Secured</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.</p>
+                        <h5>{{ home.seguridadTitle}}</h5>
+                        <p>{{ home.seguridadDescripcion|raw }}</p>
                     </div>
                 </div>
             </div>
@@ -449,8 +116,8 @@
                         <i class="flaticon-deal"></i>
                     </div>
                     <div class="detail">
-                        <h5>Trusted Agents</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.</p>
+                        <h5>{{ home.confianzaTitulo }}</h5>
+                        <p>{{ home.confianzaDescripcion|raw }}</p>
                     </div>
                 </div>
             </div>
@@ -460,8 +127,8 @@
                         <i class="flaticon-money"></i>
                     </div>
                     <div class="detail">
-                        <h5>Get an Offer</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.</p>
+                        <h5>{{ home.ofertaTitulo }}</h5>
+                        <p>{{ home.ofertaDescripcion|raw }}</p>
                     </div>
                 </div>
             </div>
@@ -471,8 +138,8 @@
                         <i class="flaticon-support-2"></i>
                     </div>
                     <div class="detail">
-                        <h5>Free Support</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.</p>
+                        <h5>{{ home.servicioTitlulo }}</h5>
+                        <p>{{ home.servicioDescripcion|raw }}</p>
                     </div>
                 </div>
             </div>
@@ -486,269 +153,121 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title text-center">
-            <h1>Latest Offers</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>{{ home.ofertasTitulo }}</h1>
+            <p>{{ home.ofertasSubtitulo }}</p>
         </div>
         <div class="row row-2">
-            <div class="col-lg-4 col-md-12">
-                <div class="row">
-                    <div class="col-md-6 col-lg-12 col-pad">
-                        <div class="category">
-                            <div class="category_bg_box cat-1-bg">
-                                <div class="category-overlay">
-                                    <div class="category-content">
-                                        <h3 class="category-title">
-                                            <a href="car-list-rightside.html">Toyota Prius specs</a>
-                                        </h3>
-                                        <h5 class="category-subtitle">$850.00</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-12 col-pad">
-                        <div class="category">
-                            <div class="category_bg_box cat-3-bg">
-                                <div class="category-overlay">
-                                    <div class="category-content">
-                                        <h3 class="category-title">
-                                            <a href="car-details.html">Lexus GS F</a>
-                                        </h3>
-                                        <h5 class="category-subtitle">$450.00</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-pad">
-                <div class="category">
-                    <div class="category_bg_box category_long_bg cat-4-bg">
-                        <div class="category-overlay">
-                            <div class="category-content">
-                                <h3 class="category-title">
-                                    <a href="#">Audi R8</a>
-                                </h3>
-                                <h5 class="category-subtitle">$150.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="row">
-                    <div class="col-md-6 col-lg-12 col-pad">
-                        <div class="category">
-                            <div class="category_bg_box cat-2-bg">
-                                <div class="category-overlay">
-                                    <div class="category-content">
-                                        <h3 class="category-title">
-                                            <a href="car-list-rightside.html">Toyota Prius</a>
-                                        </h3>
-                                        <h5 class="category-subtitle">$350.000</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-12 col-pad">
-                        <div class="category">
-                            <div class="category_bg_box cat-5-bg">
-                                <div class="category-overlay">
-                                    <div class="category-content">
-                                        <h3 class="category-title">
-                                            <a href="car-details.html">2017 Ford Mustang</a>
-                                        </h3>
-                                        <h4 class="category-subtitle">98 Properties</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Latest offers end -->
 
-<!-- Our team start -->
-<div class="our-team content-area">
-    <div class="container">
-        <!-- Main title -->
-        <div class="main-title">
-            <h1>Our Agent</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-        </div>
-        <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="team-1">
-                    <div class="team-photo">
-                        <a href="#">
-                            <img src="http://placehold.it/255x212" alt="agent" class="img-fluid">
-                        </a>
-                        <ul class="social-list clearfix">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-details">
-                        <h5><a href="agent-detail.html">Michelle Nelson</a></h5>
-                        <h6>Support Manager</h6>
-                    </div>
+            <div class="col-lg-4 col-md-12">
+                {% for automovil in ofertas %}
+                    {% if loop.index == 1 or loop.index == 2 %}
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12 col-pad">
+                                <div class="category">
+                                    <div class="category_bg_box" style="background: url({% path automovil.imagenDestacada, 'reference' %})">
+                                        <div class="category-overlay">
+                                            <div class="category-content">
+                                                <h3 class="category-title">
+                                                    <a href="car-list-rightside.html">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                </h3>
+                                                <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}{% endfor %}
                 </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="team-1">
-                    <div class="team-photo">
-                        <a href="#">
-                            <img src="http://placehold.it/255x212" alt="agent" class="img-fluid">
-                        </a>
-                        <ul class="social-list clearfix">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                {% for automovil in ofertas %}
+                    {% if loop.index == 3 %}
+                        <div class="col-lg-4 col-md-12 col-pad">
+                            <div class="category">
+                                <div class="category_bg_box category_long_bg" style="background: url({% path automovil.imagenDestacada, 'reference' %})">
+                                    <div class="category-overlay">
+                                        <div class="category-content">
+                                            <h3 class="category-title">
+                                                <a href="#">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                            </h3>
+                                            <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}{% endfor %}
+
+                    <div class="col-lg-4 col-md-12">
+                        {% for automovil in ofertas %}
+                            {% if loop.index == 4 or loop.index == 5 %}
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-12 col-pad">
+                                        <div class="category">
+                                            <div class="category_bg_box" style="background: url({% thumbnail automovil.imagenDestacada, 'small' %})">
+                                                <div class="category-overlay">
+                                                    <div class="category-content">
+                                                        <h3 class="category-title">
+                                                            <a href="car-list-rightside.html">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                        </h3>
+                                                        <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <div class="team-details">
-                        <h5><a href="agent-detail.html">Martin Smith</a></h5>
-                        <h6>Web Developer</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="team-1">
-                    <div class="team-photo">
-                        <a href="#">
-                            <img src="http://placehold.it/255x212" alt="agent" class="img-fluid">
-                        </a>
-                        <ul class="social-list clearfix">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-details">
-                        <h5><a href="agent-detail.html">Carolyn Stone</a></h5>
-                        <h6>Creative Director</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="team-1">
-                    <div class="team-photo">
-                        <a href="#">
-                            <img src="http://placehold.it/255x212" alt="agent" class="img-fluid">
-                        </a>
-                        <ul class="social-list clearfix">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-details">
-                        <h5><a href="agent-detail.html">Brandon Miller</a></h5>
-                        <h6>Manager</h6>
-                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Our team end -->
+<!-- Latest offers end -->
 
 <!-- Testimonial start -->
 <div class="testimonial bg-grea-3 content-area-5">
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Our Testimonial</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>{{ home.comentariosTitulo }}</h1>
+            <p>{{ home.comentariosSubtitulo }}</p>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area">
             <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                {% for comentario in comentarios %}
                 <div class="slick-slide-item">
                     <div class="testimonial-inner">
                         <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                            <p>{{ comentario.opinion }}</p>
                             <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
+                                {% for i in 1..comentario.rating %}
+                                    <i class="fa fa-star"></i>
+                                {% endfor %}
+                                {% if comentario.rating < 5 %}
+                                    {% for i in 1..(5 - comentario.rating) %}
+                                        <i class="fa fa-star-o"></i>
+                                    {% endfor %}
+                                {% endif %}
+                                <span>( {{ comentario.opiniones }} Reviews )</span>
                             </div>
                         </div>
                         <div class="user">
                             <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                                {% if comentario.imagen %}
+                                    <img class="media-object" src="{% path comentario.imagen, 'reference' %}" alt="user">
+                                {% else %}
+                                    <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                                {% endif %}
                             </div>
                             <div class="detail">
-                                <h5>Maikel Alisa</h5>
-                                <p>Web Designer, New York</p>
+                                <h5>{{ comentario.nombreCompleto }}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
-                            </div>
-                        </div>
-
-                        <div class="user">
-                            <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                            </div>
-                            <div class="detail">
-                                <h5>Maikel Alisa</h5>
-                                <p>Creative Director, New York</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
-                            </div>
-                        </div>
-
-                        <div class="user">
-                            <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                            </div>
-                            <div class="detail">
-                                <h5>Auro Navanth</h5>
-                                <p>Office Manager, New York</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="slick-prev slick-arrow-buton">
                 <i class="fa fa-angle-left"></i>
@@ -766,96 +285,38 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Our Blog</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1>{{ home.noticiasTitulo }}</h1>
+            <p>{{ home.noticiasSubtitulo }}</p>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area clearfix">
             <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                <div class="slick-slide-item">
-                    <div class="blog-1">
-                        <div class="blog-photo">
-                            <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                            <div class="date-box">
-                                <span>14</span>Nov
+                {% for post in posts %}
+                    <div class="slick-slide-item">
+                        <div class="blog-1">
+                            <div class="blog-photo">
+                                 {% if post.image %}
+                                    <img class="media-object" src="{% path post.image, 'reference' %}" alt="small-blog" class="img-fluid">
+                                {% else %}
+                                    <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
+                                {% endif %}
+                                <div class="date-box">
+                                    <span>{{ post.publicationDateStart|date('d') }}</span>{{ post.publicationDateStart|date('M') }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="detail">
-                            <h4>
-                                <a href="blog-details.html">Elegant Audi Car</a>
-                            </h4>
-                            <div class="post-meta clearfix">
-                                <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
+                            <div class="detail">
+                                <h4>
+                                    <a href="blog-details.html">{{ post.title }}</a>
+                                </h4>
+                                <div class="post-meta clearfix">
+                                    <span><a href="#"><i class="flaticon-user-1"></i></a>{{ post.author }}</span>
+                                    <span><a href="#"><i class="flaticon-comment"></i></a>{{ post.commentsCount }}</span>
+                                </div>
+                                <p>{{ post.abstract|raw }}</p>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
                         </div>
                     </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="blog-1">
-                        <div class="blog-photo">
-                            <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                            <div class="date-box">
-                                <span>14</span>Nov
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <h4>
-                                <a href="blog-details.html">2018 Lexus GS F</a>
-                            </h4>
-                            <div class="post-meta clearfix">
-                                <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                            </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="blog-1">
-                        <div class="blog-photo">
-                            <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                            <div class="date-box">
-                                <span>14</span>Nov
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <h4>
-                                <a href="blog-details.html">Audi R8</a>
-                            </h4>
-                            <div class="post-meta clearfix">
-                                <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                            </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="blog-1">
-                        <div class="blog-photo">
-                            <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                            <div class="date-box">
-                                <span>14</span>Nov
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <h4>
-                                <a href="blog-details.html">Audi R8</a>
-                            </h4>
-                            <div class="post-meta clearfix">
-                                <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                            </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="slick-prev slick-arrow-buton">
                 <i class="fa fa-angle-left"></i>
@@ -884,4 +345,37 @@
     </div>
 </div>
 <!-- Intro section end -->
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+        <script  src="{{ asset('assets/js/bootstrap-submenu.js') }}"></script>
+        <script  src="{{ asset('assets/js/rangeslider.js')}}"></script>
+        <script  src="{{ asset('assets/js/jquery.mb.YTPlayer.js') }}"></script>
+        <script  src="{{ asset('assets/js/bootstrap-select.min.js')}}"></script>
+        <script  src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
+        <script  src="{{ asset('assets/js/jquery.scrollUp.js') }}"></script>
+        <script  src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+        <script  src="{{ asset('assets/js/leaflet.js') }}"></script>
+        <script  src="{{ asset('assets/js/leaflet-providers.js') }}"></script>
+        <script  src="{{ asset('assets/js/leaflet.markercluster.js') }}"></script>
+        <script  src="{{ asset('assets/js/dropzone.js') }}"></script>
+        <script  src="{{ asset('assets/js/slick.min.js') }}"></script>
+        <script  src="{{ asset('assets/js/jquery.filterizr.js') }}"></script>
+        <script  src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script  src="{{ asset('assets/js/jquery.countdown.js') }}"></script>
+        <script  src="{{ asset('assets/js/maps.js') }}"></script>
+        <script  src="{{ asset('assets/js/app.js') }}"></script>
+<script type="text/javascript">
+// Background video playing script
+    $(document).ready(function () {
+        $(".player").mb_YTPlayer(
+            {
+                mobileFallbackImage: "{% path home.video, 'reference' %}"
+            }
+        );
+    });
+</script>
 {% endblock %}

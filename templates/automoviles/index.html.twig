@@ -145,7 +145,11 @@
                                         <div class="tag">Destacado</div>
                                     {% endif %}
                                     <div class="price-box">€{{ automovil.precio }}</div>
-                                    <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
+                                    {% if automovil.imagenDestacada %}
+                                        <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
+                                    {% else %}
+                                        <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
+                                    {% endif %}
                                 </a>
                             </div>
                             <div class="detail">

@@ -50,24 +50,6 @@ final class HomeAdmin extends AbstractAdmin
             ->add('title')
             ->add('subtitle')
             ->add('video')
-            ->add('titulo_grid_automoviles')
-            ->add('subtitulo_grid_automoviles')
-            ->add('seo_titulo')
-            ->add('seo_subtitulo')
-            ->add('seguridad_title')
-            ->add('seguridad_descripcion')
-            ->add('confianza_descripcion')
-            ->add('oferta_titulo')
-            ->add('oferta_descripcion')
-            ->add('servicio_titlulo')
-            ->add('servicio_descripcion')
-            ->add('ofertas_titulo')
-            ->add('ofertas_subtitulo')
-            ->add('comentarios_titulo')
-            ->add('comentarios_subtitulo')
-            ->add('noticias_titulo')
-            ->add('noticias_subtitulo')
-            ->add('confianza_titulo')
             ->add('metatitle')
             ->add('metadescription')
             ->add('_action', null, [
@@ -86,6 +68,13 @@ final class HomeAdmin extends AbstractAdmin
             'btn_delete' => true,
             'btn_list' => false,
             'label'=> 'Video banner home',
+        ];
+
+        $seo_banner = [
+            'btn_edit' => true,
+            'btn_delete' => true,
+            'btn_list' => false,
+            'label'=> 'SEO banner home',
         ];
 
         $formMapper
@@ -117,6 +106,7 @@ final class HomeAdmin extends AbstractAdmin
         ->with('Sección SEO', ['class' => 'col-md-3'])
             ->add('seo_titulo')
             ->add('seo_subtitulo')
+            ->add('seo_banner', ModelListType::class, $seo_banner)
         ->end()
         ->with('Sección SEO - Seguridad', ['class' => 'col-md-3'])
             ->add('seguridad_title')

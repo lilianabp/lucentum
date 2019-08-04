@@ -37,6 +37,11 @@ class GoogleReview
      */
     private $imagen;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nombre_completo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class GoogleReview
     public function setImagen(?Media $imagen): self
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    public function getNombreCompleto(): ?string
+    {
+        return $this->nombre_completo;
+    }
+
+    public function setNombreCompleto(string $nombre_completo): self
+    {
+        $this->nombre_completo = $nombre_completo;
 
         return $this;
     }
