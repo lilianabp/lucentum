@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Automovil;
@@ -11,6 +12,10 @@ use App\Entity\Home;
 use App\Entity\GoogleReview;
 use App\Application\Sonata\NewsBundle\Entity\Post;
 use App\Entity\DatosEmpresa;
+use App\Form\NewsletterType;
+use App\Entity\Newsletter;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class HomeController extends AbstractController
 {
@@ -38,11 +43,52 @@ class HomeController extends AbstractController
 
      public function footer(EntityManagerInterface $entityManager)
     {
-        $posts = $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], 3);
+        $ultimos = $entityManager->getRepository(Automovil::class)->findBy([], ['id' => 'DESC'], 3);
         $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
+        $form = $this->createForm(NewsletterType::class);
         return $this->render('partials/footer.html.twig', [
             'datos' => $datos,
-            'posts' => $posts,
+            'ultimos' => $ultimos,
+            'newsletter' => $form->createView(),
         ]);
     }
+
+     /**
+     * @Route("/newsletter", name="newsletter")
+     */
+     public function newsletter(Request $request, EntityManagerInterface $entityManager) {
+        $email = $request->request->get('newsletter');
+        $emailexists = $entityManager->getRepository(Newsletter::class)->findOneBy(['email'=>$email['email']]);
+        $newsletter = new Newsletter();
+        $form = $this->createForm(NewsletterType::class, $newsletter);
+        $form->handleRequest($request);
+        $status = "error";
+        $message = "";
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(!$emailexists){ 
+                $entityManager->persist($newsletter);
+                try {
+                    $entityManager->flush();
+                    $status = "success";
+                    $message = "Suscripto con éxito al Newsletter";
+                } catch (\Exception $e) {
+                        $message = $e->getMessage();
+                }   
+            } else {
+                $message = 'Tu email '.$email['email'].' ya está registrado.';
+            }
+             
+        }else{
+            $message = "Datos inválidos";
+        }
+
+        $response = array(
+            'status' => $status,
+            'message' => $message
+        );
+
+        return new JsonResponse($response);
+     }
+
 }

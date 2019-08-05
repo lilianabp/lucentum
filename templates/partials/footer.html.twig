@@ -1,125 +1,132 @@
 <footer class="footer">
-                <div class="container footer-inner">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer-item clearfix">
-                                <img src="{{ asset('assets/images/logoCompleto.png') }}" alt="logo" class="f-logo">
-                                <ul class="contact-info">
-                                    <li>
-                                        <i class="flaticon-pin"></i>{{ datos.direccion }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-mail"></i><a href="mailto:{{ datos.email }}">{{ datos.email }}</a>
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-phone"></i><a href="tel:{{ datos.movil }}">{{ datos.movil }}</a>
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fax"></i>{{ datos.telefono }}
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <div class="social-list-2">
-                                    <ul>
-                                        {% if datos.facebook %}
-                                            <li><a href="{{ datos.facebook  }}" class="facebook-bg" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                        {% endif %}
-                                        {% if datos.twitter %}
-                                            <li><a href="{{ datos.twitter }}" class="twitter-bg" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                        {% endif %}
-                                        {% if datos.instagram %}
-                                            <li><a href="{{ datos.instagram }}" class="google-bg" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                        {% endif %}
-                                        {% if datos.linkedin %}
-                                            <li><a href="{{ datos.linkedin }}" class="linkedin-bg" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                            <div class="footer-item">
-                                <h4>
-                                    Accesos
-                                </h4>
-                                <ul class="links">
-                                    <li>
-                                        <a href="{{ path('home') }}">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('automoviles') }}">Automóviles</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('servicios') }}">Servicios</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('contacto') }}">Contacto</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('novedades') }}">Noticias</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                            <div class="recent-posts footer-item">
-                                <h4>Últimos modelos</h4>
-                                <div class="media mb-4">
-                                    <a class="pr-3" href="car-details.html">
-                                        <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                                    </a>
-                                    <div class="media-body align-self-center">
-                                        <h5>
-                                            <a href="car-details.html">Bentley Continental GT</a>
-                                        </h5>
-                                        <div class="listing-post-meta">
-                                            $345,00 | <a href="#"><i class="fa fa-calendar"></i> Jan 12, 2019</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media mb-4">
-                                    <a class="pr-3" href="car-details.html">
-                                        <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                                    </a>
-                                    <div class="media-body align-self-center">
-                                        <h5>
-                                            <a href="car-details.html">Fiat Punto Red</a>
-                                        </h5>
-                                        <div class="listing-post-meta">
-                                            $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 26, 2019</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pr-3" href="car-details.html">
-                                        <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                                    </a>
-                                    <div class="media-body align-self-center">
-                                        <h5>
-                                            <a href="car-details.html">Nissan Micra Gen5</a>
-                                        </h5>
-                                        <div class="listing-post-meta">
-                                            $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 14, 2019</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer-item clearfix">
-                                <h4>Subscribe</h4>
-                                <div class="Subscribe-box">
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                    <form class="form-inline" action="#" method="GET">
-                                        <input type="text" class="form-control mb-sm-0" id="inlineFormInputName3" placeholder="Email Address">
-                                        <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12">
-                            <p class="copy sub-footer">© 2019 AUTOMÓVILES LUCENTUM</p>
-                        </div>
+    <div class="container footer-inner">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="footer-item clearfix">
+                    <img src="{{ asset('assets/images/logoCompleto.png') }}" alt="logo" class="f-logo">
+                    <ul class="contact-info">
+                        <li>
+                            <i class="flaticon-pin"></i>{{ datos.direccion }}
+                        </li>
+                        <li>
+                            <i class="flaticon-mail"></i><a href="mailto:{{ datos.email }}">{{ datos.email }}</a>
+                        </li>
+                        <li>
+                            <i class="flaticon-phone"></i><a href="tel:{{ datos.movil }}">{{ datos.movil }}</a>
+                        </li>
+                        <li>
+                            <i class="flaticon-fax"></i>{{ datos.telefono }}
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <div class="social-list-2">
+                        <ul>
+                            {% if datos.facebook %}
+                                <li><a href="{{ datos.facebook  }}" class="facebook-bg" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            {% endif %}
+                            {% if datos.twitter %}
+                                <li><a href="{{ datos.twitter }}" class="twitter-bg" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            {% endif %}
+                            {% if datos.instagram %}
+                                <li><a href="{{ datos.instagram }}" class="google-bg" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            {% endif %}
+                            {% if datos.linkedin %}
+                                <li><a href="{{ datos.linkedin }}" class="linkedin-bg" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
-            </footer>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-item">
+                    <h4>
+                        Accesos
+                    </h4>
+                    <ul class="links">
+                        <li>
+                            <a href="{{ path('home') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('automoviles') }}">Automóviles</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('servicios') }}">Servicios</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contacto') }}">Contacto</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('novedades') }}">Noticias</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="recent-posts footer-item">
+                    <h4>Últimos modelos</h4>
+                    {% for ultimo in ultimos %}
+                        <div class="media mb-4">
+                            <a class="pr-3" href="car-details.html">
+                                {% media ultimo.imagenDestacada, 'small' with {'class': 'media-object'} %}
+                            </a>
+                            <div class="media-body align-self-center">
+                                <h5>
+                                    <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}) }) }}">{{ ultimo.marca }} {{ ultimo.modelo }}</a>
+                                </h5>
+                                <div class="listing-post-meta">
+                                    ${{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}) }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="footer-item clearfix">
+                    <h4>Subscríbete</h4>
+                    <div class="Subscribe-box">
+                        <p>Entérate de las últimas ofertas y novedades en automóviles.</p>
+                         <div id="alert" class="mb-2"></div>
+                        {{ form_start(newsletter, {'attr': {'class': 'form-inline', 'id': 'newsletterForm'}}) }}
+                        {{ form_errors(newsletter) }}
+                        {{ form_widget(newsletter) }}
+                        <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
+                        {{ form_end(newsletter, {'render_rest': false} ) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12">
+                <p class="copy sub-footer">© 2019 AUTOMÓVILES LUCENTUM</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('assets/js/jquery.serializeObject.min.js') }}"></script>
+<script>
+    //$(document).on("click", ".Subscribe-box .btn", function(e){
+    $("#newsletterForm").on('submit',(function(e) {
+      e.preventDefault();
+      // get the serialized properties and values of the form 
+      var form_data =  $( this ).serialize();
+
+      // the actual request to your newAction
+      $.ajax({
+        url: '{{ path('newsletter') }}',
+        type: 'POST',
+        dataType: 'json',
+        data: form_data,
+        success:function(response){
+            $("#alert").empty();
+            if (response.status == 'success') {
+                htmlPartial = '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+response.message+'</div>';
+            } else {
+                htmlPartial = '<div class="alert alert-danger mb-0" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+response.message+'</div>';
+            }
+            $("#alert").html(htmlPartial);
+            document.getElementById("newsletterForm").reset();
+        }
+      });
+    }));
+</script>
