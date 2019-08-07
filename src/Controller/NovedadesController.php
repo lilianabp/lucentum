@@ -51,10 +51,13 @@ class NovedadesController extends AbstractController
     public function show(Request $request, EntityManagerInterface $entityManager) {
         $content = $entityManager->getRepository(Novedad::class)->findOneBy(['id'=>1]);
         $post = $entityManager->getRepository(Post::class)->findOneBy(['id'=>$request->get('id')]);
+        $tags = $entityManager->getRepository(Tag::class)->findBy(['enabled'=>1], ['id'=>'DESC']);
+
     	return $this->render('novedades/show.html.twig', [
             'controller_name' => 'NovedadesController',
             'content' => $content,
             'post'=>$post,
+            'tags' => $tags,
         ]);	
     }
 }

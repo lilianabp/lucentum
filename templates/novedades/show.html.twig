@@ -122,71 +122,17 @@
                     <!-- Recent posts start -->
                     <div class="widget recent-posts">
                         <h3 class="sidebar-title">Recent Posts</h3>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Bentley Continental GT</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $345,00 | <a href="#"><i class="fa fa-calendar"></i> Jan 12, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Fiat Punto Red</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 26, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Nissan Micra Gen5</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 14, 2019</a>
-                                </div>
-                            </div>
-                        </div>
+                            {{ render(controller('App\\Controller\\LayoutController::getUltimosModelos')) }}
                     </div>
-                    <!-- Posts By Category Start -->
-                    <div class="posts-by-category widget">
-                        <h3 class="sidebar-title">Category</h3>
-                        <div class="s-border"></div>
-                        <ul class="list-unstyled list-cat">
-                            <li><a href="#">Luxury <span>(45)</span></a></li>
-                            <li><a href="#">Pickup Truck <span>(21)</span> </a></li>
-                            <li><a href="#">Sports Car <span>(19)</span></a></li>
-                            <li><a href="#">Automakers <span>(22) </span></a></li>
-                            <li><a href="#">Wagon <span>(9) </span></a></li>
-                        </ul>
-                    </div>
+                    
                     <!-- Tags box Start -->
                     <div class="widget tags-box">
                         <h3 class="sidebar-title">Tags</h3>
                         <div class="s-border"></div>
                         <ul class="tags">
-                            <li><a href="#">Car Dealer</a></li>
-                            <li><a href="#">Auto</a></li>
-                            <li><a href="#">Car Website</a></li>
-                            <li><a href="#">Automobile</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Car Template</a></li>
-                            <li><a href="#">Buy Car</a></li>
+                            {% for tag in tags %}
+                                <li><a href="{{ path('novedades', { 'tag': tag.slug }) }}">{{ tag.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
