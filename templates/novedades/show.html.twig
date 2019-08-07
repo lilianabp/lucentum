@@ -4,13 +4,14 @@
 
 {% block content %}
 	<!-- Sub banner start -->
-<div class="sub-banner">
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Blog Details</h1>
+            <h1>Novedades</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Blog Details</li>
+                <li><a href="{{ path('novedades') }}">Noticias</a></li>
+                <li class="active">Detalles</li>
             </ul>
         </div>
     </div>
@@ -25,43 +26,25 @@
                 <!-- Blog 1 start -->
                 <div class="blog-1 blog-big mb-50">
                     <div class="blog-photo">
-                        <img src="http://placehold.it/730x486" alt="blog-img" class="img-fluid">
+                        {% if post.image is defined and post.image is not null %}
+                            <img src="{% path post.image, 'reference' %}" alt="blog-img" class="img-fluid">
+                        {% else %}
+                            <img src="http://placehold.it/730x486" alt="blog-img" class="img-fluid">
+                        {% endif %}
                     </div>
                     <div class="detail">
                         <h3>
-                            <a href="#">2018 Lexus GS F</a>
+                            <a href="{{ path ('post', {'title': post.title|lower|replace({' ':''}), 'id': post.id }) }}">{{ post.title }}</a>
                         </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
-                        <p>electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.more recently with desktop publishing</p>
-                        <p>essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.more recently with desktop publishing</p>
+                        <p>{{ post.content|raw }}</p>
                         <br>
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="blog-tags">
                                     <span>Tags</span>
-                                    <a href="#">Auto</a>
-                                    <a href="#">Theme</a>
-                                    <a href="#">Buy Car</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="blog-social-list">
-                                    <span>Share</span>
-                                    <a href="#" class="facebook-bg">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="twitter-bg">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="google-bg">
-                                        <i class="fa fa-google"></i>
-                                    </a>
-                                    <a href="#" class="linkedin-bg">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                    <a href="#" class="pinterest-bg">
-                                        <i class="fa fa-pinterest"></i>
-                                    </a>
+                                    {% for tag in post.tags %}
+                                        <a href="#">{{ tag.name }}</a>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -70,83 +53,30 @@
                 <!-- Heading 2 -->
                 <h3 class="heading-2">Comments Section</h3>
                 <!-- Comments start -->
+                
+                    
+                
                 <ul class="comments">
+                    {% for comment in post.comments %}
                     <li>
                         <div class="comment">
                             <div class="comment-author">
                                 <a href="#">
-                                    <img src="http://placehold.it/50x50" alt="comments-user">
+                                    <img src="{{ asset('assets/images/comment.png') }}" alt="comments-user">
                                 </a>
                             </div>
                             <div class="comment-content">
                                 <div class="comment-meta">
                                     <h6>
-                                        Maikel Alisa
-                                        <span class="float-right">11/28/2018<a href="#">Reply</a></span>
+                                        {{ comment }}
+                                        <span class="float-right">{{ comment.createdAt|date('d/m/Y') }}</span>
                                     </h6>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim  sem vulputate interdum et vel eros.</p>
+                                <p>{{ comment.message|raw }}</p>
                             </div>
                         </div>
-                        <ul>
-                            <li>
-                                <div class="comment">
-                                    <div class="comment-author">
-                                        <a href="#">
-                                            <img src="http://placehold.it/50x50" alt="comments-user">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content">
-                                        <div class="comment-meta">
-                                            <h6>
-                                                Carolyn Stone
-                                                <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                            </h6>
-                                        </div>
-                                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et.</P>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </li>
-                    <li>
-                        <div class="comment">
-                            <div class="comment-author">
-                                <a href="#">
-                                    <img src="http://placehold.it/60x60 " alt="comments-user">
-                                </a>
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-meta">
-                                    <h6>
-                                        Brandon Miller
-                                        <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                    </h6>
-                                </div>
-                                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim.</P>
-                            </div>
-                        </div>
-                        <ul>
-                            <li>
-                                <div class="comment mb-50">
-                                    <div class="comment-author">
-                                        <a href="#">
-                                            <img src="http://placehold.it/60x60 " alt="comments-user">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content b-none">
-                                        <div class="comment-meta">
-                                            <h6>
-                                                Michelle Nelson
-                                                <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                            </h6>
-                                        </div>
-                                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim.</P>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                    {% endfor %}
                 </ul>
                 <!-- Contact 2 start -->
                 <div class="contact-2 ca mb-50">

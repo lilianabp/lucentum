@@ -11,17 +11,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 
-final class ListadoServicioAdmin extends AbstractAdmin
+final class NovedadAdmin extends AbstractAdmin
 {
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
             ->add('id')
-            ->add('titulo')
-            ->add('subtitulo')
-            ->add('metatitle')
-            ->add('metadescription')
             ;
     }
 
@@ -29,8 +25,7 @@ final class ListadoServicioAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('titulo')
-            ->add('subtitulo')
+            ->add('banner')
             ->add('metatitle')
             ->add('metadescription')
             ->add('_action', null, [
@@ -50,14 +45,11 @@ final class ListadoServicioAdmin extends AbstractAdmin
             'btn_list' => false,
             'label'=> 'Banner de sección',
         ];
+
         $formMapper
-            ->add('titulo')
-            ->add('subtitulo')
             ->add('banner', ModelListType::class, $imagen)
             ->add('metatitle')
             ->add('metadescription')
-            ->add('comentarios_titulo')
-            ->add('comentario_subtitulo')
             ;
     }
 
@@ -65,10 +57,6 @@ final class ListadoServicioAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('titulo')
-            ->add('subtitulo')
-            ->add('metatitle')
-            ->add('metadescription')
             ;
     }
 }

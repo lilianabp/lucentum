@@ -29,6 +29,7 @@ class HomeController extends AbstractController
         $destacados = $entityManager->getRepository(Automovil::class)->getOfertasDestacados('destacado');
         $ofertas = $entityManager->getRepository(Automovil::class)->getOfertasDestacados('oferta');
         $posts = $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], 5); 
+        
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'searchForm' => $form->createView(),

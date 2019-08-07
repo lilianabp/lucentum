@@ -43,6 +43,16 @@ class ListadoServicio
      */
     private $metadescription;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $comentarios_titulo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $comentario_subtitulo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,30 @@ class ListadoServicio
     public function setMetadescription(?string $metadescription): self
     {
         $this->metadescription = $metadescription;
+
+        return $this;
+    }
+
+    public function getComentariosTitulo(): ?string
+    {
+        return $this->comentarios_titulo;
+    }
+
+    public function setComentariosTitulo(string $comentarios_titulo): self
+    {
+        $this->comentarios_titulo = $comentarios_titulo;
+
+        return $this;
+    }
+
+    public function getComentarioSubtitulo(): ?string
+    {
+        return $this->comentario_subtitulo;
+    }
+
+    public function setComentarioSubtitulo(?string $comentario_subtitulo): self
+    {
+        $this->comentario_subtitulo = $comentario_subtitulo;
 
         return $this;
     }

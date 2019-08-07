@@ -16,4 +16,15 @@ use Sonata\NewsBundle\Entity\BasePostRepository;
  */
 class PostRepository extends BasePostRepository
 {
+	public function findBySearched($search)
+    {
+        return $qb = $this->createQueryBuilder('a')
+			->andWhere('a.title LIKE :search')
+        	->orWhere('a.abstract LIKE :search')
+            ->orWhere('a.content LIKE :search')
+            ->setParameter(':search', '%'.$search.'%')
+			->getQuery()
+            ->getResult();
+        ;
+    }
 }

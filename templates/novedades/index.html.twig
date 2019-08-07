@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ content.metatitle }}{% endblock %}
+
+{% block meta_description %}<meta name="description" content="{{ content.metadescription}}">{% endblock %}
 
 {% block content %}
 <!-- Sub banner start -->
-<div class="sub-banner">
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Blog Columns 2</h1>
+            <h1>Novedades</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Blog Columns 2</li>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="active">Noticias#Ofertas</li>
             </ul>
         </div>
     </div>
@@ -23,149 +26,14 @@
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>14</span>Nov
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">Elegant Audi Car</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
+                    {% for novedad in novedades %}
+                        <div class="col-lg-6 col-md-6">
+                            {% include 'layout/post.html.twig' with { 'post': novedad } %}
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>22</span>Feb
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">2018 Lexus GS F</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>17</span>Jan
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">Audi R8</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>14</span>Nov
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">Elegant Audi Car</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>22</span>Feb
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">2018 Lexus GS F</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                <div class="date-box">
-                                    <span>17</span>Jan
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">Audi R8</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>Admin</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>17K</span>
-                                    <span><a href="#"><i class="flaticon-calendar"></i></a>73k</span>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Page navigation start -->
-                <div class="pagination-box p-box-2 text-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
-                            </li>
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="car-list-leftsidebar.html"><i class="fa fa-angle-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                {{ knp_pagination_render(novedades) }}
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
@@ -175,8 +43,8 @@
                         <div class="s-border"></div>
                         <form class="form-inline form-search" method="GET">
                             <div class="form-group">
-                                <label class="sr-only" for="textsearch2">Looking for something</label>
-                                <input type="text" class="form-control" id="textsearch2" placeholder="Looking for something">
+                                <label class="sr-only" for="textsearch2">Busca Novedades y Ofertas</label>
+                                <input type="text" class="form-control" id="textsearch2" name="search" placeholder="Busca Novedades y Ofertas">
                             </div>
                             <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                         </form>
@@ -184,71 +52,17 @@
                     <!-- Recent posts start -->
                     <div class="widget recent-posts">
                         <h3 class="sidebar-title">Recent Posts</h3>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Bentley Continental GT</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $345,00 | <a href="#"><i class="fa fa-calendar"></i> Jan 12, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Fiat Punto Red</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 26, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Nissan Micra Gen5</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 14, 2019</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{ render(controller('App\\Controller\\LayoutController::getUltimosModelos')) }}
                     </div>
-                    <!-- Posts By Category Start -->
-                    <div class="posts-by-category widget">
-                        <h3 class="sidebar-title">Category</h3>
-                        <div class="s-border"></div>
-                        <ul class="list-unstyled list-cat">
-                            <li><a href="#">Luxury <span>(45)</span></a></li>
-                            <li><a href="#">Pickup Truck <span>(21)</span> </a></li>
-                            <li><a href="#">Sports Car <span>(19)</span></a></li>
-                            <li><a href="#">Automakers <span>(22) </span></a></li>
-                            <li><a href="#">Wagon <span>(9) </span></a></li>
-                        </ul>
-                    </div>
+
                     <!-- Tags box Start -->
                     <div class="widget tags-box">
                         <h3 class="sidebar-title">Tags</h3>
                         <div class="s-border"></div>
                         <ul class="tags">
-                            <li><a href="#">Car Dealer</a></li>
-                            <li><a href="#">Auto</a></li>
-                            <li><a href="#">Car Website</a></li>
-                            <li><a href="#">Automobile</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Car Template</a></li>
-                            <li><a href="#">Buy Car</a></li>
+                            {% for tag in tags %}
+                                <li><a href="{{ path('novedades', { 'tag': tag.slug }) }}">{{ tag.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

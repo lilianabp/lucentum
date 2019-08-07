@@ -32,6 +32,7 @@ sonata_admin:
                     - admin.datos_empresa
                     - admin.listado_automovil
                     - admin.listado_servicio
+                    - admin.novedad
                     - admin.contacto
             sonata_user:
                 label: Usuarios

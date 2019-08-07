@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ content.metatitle }}{% endblock %}
+
+{% block meta_description %}<meta name="description" content="{{ content.metadescription }}">{% endblock %}
 
 {% block content %}
 <!-- Sub banner start -->
-<div class="sub-banner">
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Services</h1>
+            <h1>Servicios</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Services</li>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="active">Servicios</li>
             </ul>
         </div>
     </div>
@@ -22,98 +25,23 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title text-center">
-            <h1>Our Services</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>{{ content.titulo }}</h1>
+            <p>{{ content.subtitulo }}</p>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-speed"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Super Fast</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-wheel"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Oil Change</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            {% for servicio in servicios %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-info">
+                        <div class="icon">
+                            <i class="{{ servicio.icono }}"></i>
+                        </div>
+                        <div class="detail">
+                            <h3>{{ servicio.nombre }}</h3>
+                            <p>{{ servicio.descripcion|raw }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-air-conditioner"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>AIR conditioning</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-car-2"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Dealership</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-motor"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Repairing</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-deal"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Trusted Agents</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-lock"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Security</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="service-info">
-                    <div class="icon">
-                        <i class="flaticon-support-2"></i>
-                    </div>
-                    <div class="detail">
-                        <h3>Free Support</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -124,95 +52,11 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Testimonial</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>{{ content.comentariosTitulo }}</h1>
+            <p>{{ content.comentarioSubtitulo }}</p>
         </div>
         <!-- Slick slider area start -->
-        <div class="slick-slider-area">
-            <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
-                            </div>
-                        </div>
-                        <div class="user">
-                            <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                            </div>
-                            <div class="detail">
-                                <h5>Maikel Alisa</h5>
-                                <p>Web Designer, New York</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
-                            </div>
-                        </div>
-
-                        <div class="user">
-                            <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                            </div>
-                            <div class="detail">
-                                <h5>Maikel Alisa</h5>
-                                <p>Creative Director, New York</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span>( 4 Reviews )</span>
-                            </div>
-                        </div>
-
-                        <div class="user">
-                            <div class="photo">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                            </div>
-                            <div class="detail">
-                                <h5>Auro Navanth</h5>
-                                <p>Office Manager, New York</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="slick-prev slick-arrow-buton">
-                <i class="fa fa-angle-left"></i>
-            </div>
-            <div class="slick-next slick-arrow-buton">
-                <i class="fa fa-angle-right"></i>
-            </div>
-        </div>
+        {{ render(controller('App\\Controller\\LayoutController::getComentarios', {'max': 5 })) }}
     </div>
 </div>
 <!-- Testimonial end -->

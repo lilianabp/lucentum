@@ -11,7 +11,7 @@
 </div>
 <div class="detail">
     <h4>
-        <a href="blog-details.html">{{ post.title }}</a>
+        <a href="{{ path('post', {'title': post.title|lower|replace({' ':''}), 'id': post.id  } ) }}">{{ post.title }}</a>
     </h4>
     <div class="post-meta clearfix">
         <span><a href="#"><i class="flaticon-user-1"></i></a>{{ post.author }}</span>
