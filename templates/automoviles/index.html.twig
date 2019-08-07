@@ -52,48 +52,7 @@
                 <div class="row">
                     {% for automovil in automoviles  %}
                     <div class="col-lg-6 col-md-6">
-                        <div class="car-box">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    {% if automovil.destacado %}
-                                        <div class="tag">Destacado</div>
-                                    {% endif %}
-                                    <div class="price-box">€{{ automovil.precio }}</div>
-                                    {% if automovil.imagenDestacada %}
-                                        <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
-                                    {% else %}
-                                        <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-grid-rightside.html">{{ automovil.marca }} {{automovil.modelo}}</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>Ctra. de Agost, 128, 03690 Sant Vicent del Raspeig, Alacant
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-way"></i> {{ automovil.kilometraje }} km
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-manual-transmission"></i> {{ automovil.cambio }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-calendar-1"></i> {{ automovil.anio }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-fuel"></i> {{ automovil.combustible }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car"></i> {{ automovil.color }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                       {% include 'layout/automovil.html.twig' with {'automovil': automovil } %}
                     </div>
                 {% endfor %}
                 </div>

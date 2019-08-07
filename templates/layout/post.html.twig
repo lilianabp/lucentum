@@ -1,0 +1,22 @@
+<div class="blog-1">
+    <div class="blog-photo">
+       {% if post.image %}
+        <img class="media-object" src="{% path post.image, 'reference' %}" alt="small-blog" class="img-fluid">
+    {% else %}
+        <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
+    {% endif %}
+    <div class="date-box">
+        <span>{{ post.publicationDateStart|date('d') }}</span>{{ post.publicationDateStart|date('M') }}
+    </div>
+</div>
+<div class="detail">
+    <h4>
+        <a href="blog-details.html">{{ post.title }}</a>
+    </h4>
+    <div class="post-meta clearfix">
+        <span><a href="#"><i class="flaticon-user-1"></i></a>{{ post.author }}</span>
+        <span><a href="#"><i class="flaticon-comment"></i></a>{{ post.commentsCount }}</span>
+    </div>
+    <p>{{ post.abstract|raw }}</p>
+</div>
+</div>

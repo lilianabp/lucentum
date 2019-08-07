@@ -1,0 +1,42 @@
+<div class="slick-slider-area">
+    <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+        {% for comentario in comentarios %}
+            <div class="slick-slide-item">
+                <div class="testimonial-inner">
+                    <div class="text-box">
+                        <p>{{ comentario.opinion }}</p>
+                        <div class="rating">
+                            {% for i in 1..comentario.rating %}
+                                <i class="fa fa-star"></i>
+                            {% endfor %}
+                            {% if comentario.rating < 5 %}
+                                {% for i in 1..(5 - comentario.rating) %}
+                                    <i class="fa fa-star-o"></i>
+                                {% endfor %}
+                            {% endif %}
+                            <span>( {{ comentario.opiniones }} Reviews )</span>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="photo">
+                            {% if comentario.imagen %}
+                                <img class="media-object" src="{% path comentario.imagen, 'reference' %}" alt="user">
+                            {% else %}
+                                <img class="media-object" src="http://placehold.it/50x50" alt="user">
+                            {% endif %}
+                        </div>
+                        <div class="detail">
+                            <h5>{{ comentario.nombreCompleto }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="slick-prev slick-arrow-buton">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="slick-next slick-arrow-buton">
+        <i class="fa fa-angle-right"></i>
+    </div>
+</div>

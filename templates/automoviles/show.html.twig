@@ -3,266 +3,229 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-	<!-- Sub banner start -->
-<div class="sub-banner">
+<!-- Sub banner start -->
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Blog Details</h1>
+            <h1>Automóvil</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Blog Details</li>
+                <li><a href="{{ path('automoviles') }}">Volver al Listado</a></li>
+                <li class="active">Detalles</li>
             </ul>
         </div>
     </div>
 </div>
 <!-- Sub Banner end -->
 
-<!-- Blog body start -->
-<div class="blog-body content-area-4">
+<!-- Car details page start -->
+<div class="car-details-page content-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12">
-                <!-- Blog 1 start -->
-                <div class="blog-1 blog-big mb-50">
-                    <div class="blog-photo">
-                        <img src="http://placehold.it/730x486" alt="blog-img" class="img-fluid">
-                    </div>
-                    <div class="detail">
-                        <h3>
-                            <a href="#">2018 Lexus GS F</a>
-                        </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
-                        <p>electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.more recently with desktop publishing</p>
-                        <p>essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.more recently with desktop publishing</p>
-                        <br>
-                        <div class="row clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="blog-tags">
-                                    <span>Tags</span>
-                                    <a href="#">Auto</a>
-                                    <a href="#">Theme</a>
-                                    <a href="#">Buy Car</a>
-                                </div>
+            <div class="col-lg-8 col-md-12 col-xs-12">
+              
+                <div class="car-details-section">
+                    <div id="carDetailsSlider" class="carousel car-details-sliders slide slide-2">
+                        <!-- main slider carousel items -->
+                        <div class="carousel-inner">
+                            {% for data in medias %}
+                            <div class="{% if loop.index == 1 %}active{% endif %} item carousel-item" data-slide-number="{{ loop.index - 1 }}">
+                                <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="slider-car">
+                                
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="blog-social-list">
-                                    <span>Share</span>
-                                    <a href="#" class="facebook-bg">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="twitter-bg">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="google-bg">
-                                        <i class="fa fa-google"></i>
-                                    </a>
-                                    <a href="#" class="linkedin-bg">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                    <a href="#" class="pinterest-bg">
-                                        <i class="fa fa-pinterest"></i>
-                                    </a>
-                                </div>
-                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                        <!-- main slider carousel nav controls -->
+                        <ul class="carousel-indicators car-properties list-inline nav nav-justified">
+
+                            {% for data in medias %}
+                            <li class="list-inline-item {% if loop.index == 1 %}active{% endif %}">
+                                <a id="carousel-selector-{{ loop.index - 1 }}" {% if loop.index == 1 %}class="selected"{% endif %} data-slide-to="{{ loop.index - 1 }}" data-target="#carDetailsSlider">
+                                    <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="small-car">
+                                </a>
+                            </li>
+                        
+                            {% endfor %}
+                        </ul>
+                        <div class="heading-car-2">
+                            <h3>{{ automovil.marca }} {{ automovil.modelo }}</h3>
+                            <div class="price-location"><span class="car-price">€{{ automovil.precio }}</span> <span class="rent">En Venta</span></div>
                         </div>
                     </div>
-                </div>
-                <!-- Heading 2 -->
-                <h3 class="heading-2">Comments Section</h3>
-                <!-- Comments start -->
-                <ul class="comments">
-                    <li>
-                        <div class="comment">
-                            <div class="comment-author">
-                                <a href="#">
-                                    <img src="http://placehold.it/50x50" alt="comments-user">
-                                </a>
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-meta">
-                                    <h6>
-                                        Maikel Alisa
-                                        <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                    </h6>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim  sem vulputate interdum et vel eros.</p>
-                            </div>
-                        </div>
+                    <!-- Advanced search start -->
+                    <div class="widget-2 advanced-search bg-grea-2 d-lg-none d-xl-none">
+                        <h3 class="sidebar-title">Reserva este automóvil</h3>
                         <ul>
                             <li>
-                                <div class="comment">
-                                    <div class="comment-author">
-                                        <a href="#">
-                                            <img src="http://placehold.it/50x50" alt="comments-user">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content">
-                                        <div class="comment-meta">
-                                            <h6>
-                                                Carolyn Stone
-                                                <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                            </h6>
-                                        </div>
-                                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et.</P>
-                                    </div>
-                                </div>
+                                <span>Marca</span>{{ automovil.marca }}
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="comment">
-                            <div class="comment-author">
-                                <a href="#">
-                                    <img src="http://placehold.it/60x60 " alt="comments-user">
-                                </a>
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-meta">
-                                    <h6>
-                                        Brandon Miller
-                                        <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                    </h6>
-                                </div>
-                                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim.</P>
-                            </div>
-                        </div>
-                        <ul>
                             <li>
-                                <div class="comment mb-50">
-                                    <div class="comment-author">
-                                        <a href="#">
-                                            <img src="http://placehold.it/60x60 " alt="comments-user">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content b-none">
-                                        <div class="comment-meta">
-                                            <h6>
-                                                Michelle Nelson
-                                                <span class="float-right">11/28/2018<a href="#">Reply</a></span>
-                                            </h6>
-                                        </div>
-                                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim.</P>
-                                    </div>
-                                </div>
+                                <span>Modelo</span>{{ automovil.modelo }}
+                            </li>
+                            <li>
+                                <span>Año</span>{{ automovil.anio }}
+                            </li>
+                            <li>
+                                <span>Condición</span>{{ automovil.condicion }}
+                            </li>
+                            <li>
+                                <span>Kilometraje</span>{{ automovil.kilometraje }}km
+                            </li>
+                            <li>
+                                <span>Color</span>{{ automovil.color }}
+                            </li>
+                            <li>
+                                <span>Transmision</span>{{ automovil.cambio }}
+                            </li>
+                            <li>
+                                <span>Plazas</span>{{ automovil.plazas }}
+                            </li>
+                            <li>
+                                <span>Combustible</span>{{ automovil.combustible }}
                             </li>
                         </ul>
-                    </li>
-                </ul>
-                <!-- Contact 2 start -->
-                <div class="contact-2 ca mb-50">
-                    <h3 class="heading-2">Contact Form</h3>
-                    <form action="#" method="GET" enctype="multipart/form-data">
+                    </div>
+                    <!-- Description start -->
+                    <div class="Description mb-50">
+                        <h3 class="heading-2">Descripcion</h3>
+                        <p>{{ automovil.descripcion|raw }}</p>
+                    </div>
+                    <!-- Car amenities start -->
+                    <div class="car-amenities mb-30">
+                        <h3 class="heading-2">Specifications</h3>
                         <div class="row">
-                            <div class="form-group name col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <ul class="amenities">
+                                    <li>
+                                        <i class="fa fa-check"></i>Marca: {{ automovil.marca }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Modelo: {{ automovil.modelo }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Kilometraje: {{ automovil.kilometraje }}KM
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="form-group email col-md-6">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <ul class="amenities">
+                                    <li>
+                                        <i class="fa fa-check"></i>Puertas: {{ automovil.puertas }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Plazas: {{ automovil.plazas }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Año: {{ automovil.anio }}
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="form-group number col-md-6">
-                                <input type="text" name="phone" class="form-control" placeholder="Number">
-                            </div>
-                            <div class="form-group number col-md-6">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
-                            </div>
-                            <div class="form-group message col-md-12">
-                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
-                            </div>
-                            <div class="send-btn col-md-12">
-                                <button type="submit" class="btn btn-md button-theme">Send Message</button>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <ul class="amenities">
+                                    <li>
+                                        <i class="fa fa-check"></i>Color: {{ automovil.color }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Combustible: {{ automovil.combustible }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-check"></i>Cambio: {{ automovil.cambio }}
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <!-- Inside car start -->
+                    {% if automovil.video is not null %}
+                    <div class="inside-car mb-50">
+                        <h3 class="heading-2">Video</h3>
+                        <iframe src="https://www.youtube.com/embed/{{ automovil.video.providerReference }}" allowfullscreen=""></iframe>
+                    </div>
+                    {% endif %}
+                    <!-- location start -->
+                    <div class="location mb-50">
+                        <div class="map">
+                            <h3 class="heading-2">Location</h3>
+                            <div id="map" class="contact-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3126.6120954056983!2d-0.5446797843212152!3d38.404217183467225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6233f48eb5bd63%3A0x2e403ef333021b59!2sAutom%C3%B3viles+Lucentum!5e0!3m2!1ses!2ses!4v1565125437908!5m2!1ses!2ses" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
-                    <!-- Search box -->
-                    <div class="widget search-box">
-                        <h3 class="sidebar-title">Search</h3>
-                        <div class="s-border"></div>
-                        <form class="form-inline form-search" method="GET">
-                            <div class="form-group">
-                                <label class="sr-only" for="textsearch2">Looking for something</label>
-                                <input type="text" class="form-control" id="textsearch2" placeholder="Looking for something">
-                            </div>
-                            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                        </form>
+                    <!-- Advanced search start -->
+                    <div class="widget advanced-search d-none d-xl-block d-lg-block">
+                         <h3 class="sidebar-title">Reserva este automóvil</h3>
+                        <ul>
+                            <li>
+                                <span>Marca</span>{{ automovil.marca }}
+                            </li>
+                            <li>
+                                <span>Modelo</span>{{ automovil.modelo }}
+                            </li>
+                            <li>
+                                <span>Año</span>{{ automovil.anio }}
+                            </li>
+                            <li>
+                                <span>Condición</span>{{ automovil.condicion }}
+                            </li>
+                            <li>
+                                <span>Kilometraje</span>{{ automovil.kilometraje }}km
+                            </li>
+                            <li>
+                                <span>Color</span>{{ automovil.color }}
+                            </li>
+                            <li>
+                                <span>Transmision</span>{{ automovil.cambio }}
+                            </li>
+                            <li>
+                                <span>Plazas</span>{{ automovil.plazas }}
+                            </li>
+                            <li>
+                                <span>Combustible</span>{{ automovil.combustible }}
+                            </li>
+                        </ul>
                     </div>
                     <!-- Recent posts start -->
                     <div class="widget recent-posts">
-                        <h3 class="sidebar-title">Recent Posts</h3>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Bentley Continental GT</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $345,00 | <a href="#"><i class="fa fa-calendar"></i> Jan 12, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Fiat Punto Red</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 26, 2019</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <a class="pr-3" href="car-details.html">
-                                <img class="media-object" src="http://placehold.it/60x60" alt="small-car">
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="car-details.html">Nissan Micra Gen5</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    $745,00 | <a href="#"><i class="fa fa-calendar"></i> Feb 14, 2019</a>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="sidebar-title">Últimos modelos</h3>
+                        {{ render(controller('App\\Controller\\LayoutController:getUltimosModelos')) }}
                     </div>
-                    <!-- Posts By Category Start -->
-                    <div class="posts-by-category widget">
-                        <h3 class="sidebar-title">Category</h3>
-                        <div class="s-border"></div>
-                        <ul class="list-unstyled list-cat">
-                            <li><a href="#">Luxury <span>(45)</span></a></li>
-                            <li><a href="#">Pickup Truck <span>(21)</span> </a></li>
-                            <li><a href="#">Sports Car <span>(19)</span></a></li>
-                            <li><a href="#">Automakers <span>(22) </span></a></li>
-                            <li><a href="#">Wagon <span>(9) </span></a></li>
-                        </ul>
-                    </div>
-                    <!-- Tags box Start -->
-                    <div class="widget tags-box">
-                        <h3 class="sidebar-title">Tags</h3>
-                        <div class="s-border"></div>
-                        <ul class="tags">
-                            <li><a href="#">Car Dealer</a></li>
-                            <li><a href="#">Auto</a></li>
-                            <li><a href="#">Car Website</a></li>
-                            <li><a href="#">Automobile</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Car Template</a></li>
-                            <li><a href="#">Buy Car</a></li>
+                    <!-- Social sinks start -->
+                    <div class="widget social-links">
+                        <h3 class="sidebar-title">Social Links</h3>
+                        <ul class="social-list clearfix">
+                            {% if datos.facebook %}
+                                <li><a href="{{ datos.facebook }}" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                            {% endif %}
+                            {% if datos.twitter %}
+                                <li><a href="{{ datos.twitter }}" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                            {% endif %}
+                            {% if datos.instagram %}
+                                <li><a href="{{ datos.instagram }}" class="google-bg"><i class="fa fa-instagram"></i></a></li>
+                            {% endif %}
+                            {% if datos.linkedin %}
+                                <li><a href="{{ datos.linkedin }}" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="heading-2">Relacionados</h3>
+            </div>
+            {% for auto in automovil.relacionados %}
+            <div class="col-lg-4 col-md-6">
+                {% include 'layout/automovil.html.twig' %}
+            </div>
+        {% endfor %}
+        </div>
     </div>
 </div>
-<!-- Blog body end -->
+<!-- Properties details page end -->
 {% endblock %}

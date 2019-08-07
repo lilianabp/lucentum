@@ -41,48 +41,7 @@
         <div class="row">
             {% for automovil in destacados %}
             <div class="col-lg-4 col-md-6">
-                <div class="car-box">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            {% if automovil.destacado %}
-                                <div class="tag">Destacado</div>
-                            {% endif %}
-                            <div class="price-box">€{{ automovil.precio }}</div>
-                            {% if automovil.imagenDestacada %}
-                                <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
-                            {% else %}
-                                <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <h1 class="title">
-                            <a href="car-grid-rightside.html">{{ automovil.marca }} {{automovil.modelo}}</a>
-                        </h1>
-                        <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>Ctra. de Agost, 128, 03690 Sant Vicent del Raspeig, Alacant
-                            </a>
-                        </div>
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-way"></i> {{ automovil.kilometraje }} km
-                            </li>
-                            <li>
-                                <i class="flaticon-manual-transmission"></i> {{ automovil.cambio }}
-                            </li>
-                            <li>
-                                <i class="flaticon-calendar-1"></i> {{ automovil.anio }}
-                            </li>
-                            <li>
-                                <i class="flaticon-fuel"></i> {{ automovil.combustible }}
-                            </li>
-                            <li>
-                                <i class="flaticon-car"></i> {{ automovil.color }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {% include 'layout/automovil.html.twig' %}
             </div>
         {% endfor %}
         </div>
@@ -234,48 +193,7 @@
             <p>{{ home.comentariosSubtitulo }}</p>
         </div>
         <!-- Slick slider area start -->
-        <div class="slick-slider-area">
-            <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                {% for comentario in comentarios %}
-                <div class="slick-slide-item">
-                    <div class="testimonial-inner">
-                        <div class="text-box">
-                            <p>{{ comentario.opinion }}</p>
-                            <div class="rating">
-                                {% for i in 1..comentario.rating %}
-                                    <i class="fa fa-star"></i>
-                                {% endfor %}
-                                {% if comentario.rating < 5 %}
-                                    {% for i in 1..(5 - comentario.rating) %}
-                                        <i class="fa fa-star-o"></i>
-                                    {% endfor %}
-                                {% endif %}
-                                <span>( {{ comentario.opiniones }} Reviews )</span>
-                            </div>
-                        </div>
-                        <div class="user">
-                            <div class="photo">
-                                {% if comentario.imagen %}
-                                    <img class="media-object" src="{% path comentario.imagen, 'reference' %}" alt="user">
-                                {% else %}
-                                    <img class="media-object" src="http://placehold.it/50x50" alt="user">
-                                {% endif %}
-                            </div>
-                            <div class="detail">
-                                <h5>{{ comentario.nombreCompleto }}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="slick-prev slick-arrow-buton">
-                <i class="fa fa-angle-left"></i>
-            </div>
-            <div class="slick-next slick-arrow-buton">
-                <i class="fa fa-angle-right"></i>
-            </div>
-        </div>
+        {{ render(controller('App\\Controller\\LayoutController::getComentarios', { 'max': 5 })) }}
     </div>
 </div>
 <!-- Testimonial end -->
@@ -293,28 +211,7 @@
             <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
                 {% for post in posts %}
                     <div class="slick-slide-item">
-                        <div class="blog-1">
-                            <div class="blog-photo">
-                                 {% if post.image %}
-                                    <img class="media-object" src="{% path post.image, 'reference' %}" alt="small-blog" class="img-fluid">
-                                {% else %}
-                                    <img src="http://placehold.it/350x253" alt="small-blog" class="img-fluid">
-                                {% endif %}
-                                <div class="date-box">
-                                    <span>{{ post.publicationDateStart|date('d') }}</span>{{ post.publicationDateStart|date('M') }}
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h4>
-                                    <a href="blog-details.html">{{ post.title }}</a>
-                                </h4>
-                                <div class="post-meta clearfix">
-                                    <span><a href="#"><i class="flaticon-user-1"></i></a>{{ post.author }}</span>
-                                    <span><a href="#"><i class="flaticon-comment"></i></a>{{ post.commentsCount }}</span>
-                                </div>
-                                <p>{{ post.abstract|raw }}</p>
-                            </div>
-                        </div>
+                        {% include 'layout/post.html.twig' with {'post': post} %}
                     </div>
                 {% endfor %}
             </div>

@@ -10,6 +10,7 @@ use App\Entity\Automovil;
 use App\Form\SearchType;
 use App\Entity\ListadoAutomovil;
 use Knp\Component\Pager\PaginatorInterface;
+use App\Entity\DatosEmpresa;
 
 class AutomovilesController extends AbstractController
 {
@@ -36,11 +37,22 @@ class AutomovilesController extends AbstractController
     }
 
     /**
-	* @Route("/automoviles/{marca}-{modelo}", name="automovil")
+	* @Route("/{marca}-{modelo}-{id}", name="automovil")
     */
-    public function show() {
+    public function show(Request $request, EntityManagerInterface $entityManager) {
+        $id = $request->get('id');
+        $content = $entityManager->getRepository(ListadoAutomovil::class)->findOneBy(['id' => 1]);
+        $automovil = $entityManager->getRepository(Automovil::class)->findOneBy(['id' => $id]);
+        $galeria = $automovil->getGaleria();
+        $medias = ($galeria?$automovil->getGaleria()->getGalleryHasMedias():[]);
+        $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
+
     	return $this->render('automoviles/show.html.twig', [
             'controller_name' => 'AutomovilesController',
+            'content'=>$content,
+            'automovil'=>$automovil,
+            'medias'=>$medias,
+            'datos'=>$datos
         ]);
     }
 

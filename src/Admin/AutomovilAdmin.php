@@ -136,6 +136,7 @@ final class AutomovilAdmin extends AbstractAdmin
         ->add('relacionados', EntityType::class, [
             'class' => Automovil::class,
             'multiple'=> true,
+            'by_reference' => false,
         ])
             ;
     }

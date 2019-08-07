@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Automovil;
 use App\Entity\Home;
 use App\Entity\GoogleReview;
-use App\Application\Sonata\NewsBundle\Entity\Post;
 use App\Entity\DatosEmpresa;
-use App\Form\NewsletterType;
 use App\Entity\Newsletter;
+use App\Form\NewsletterType;
+use App\Form\SearchType;
+use App\Application\Sonata\NewsBundle\Entity\Post;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -28,7 +28,6 @@ class HomeController extends AbstractController
         $homeContent = $entityManager->getRepository(Home::class)->findOneBy(['id' => 1]);
         $destacados = $entityManager->getRepository(Automovil::class)->getOfertasDestacados('destacado');
         $ofertas = $entityManager->getRepository(Automovil::class)->getOfertasDestacados('oferta');
-        $comentarios = $entityManager->getRepository(GoogleReview::class)->findBy([], ['id' => 'DESC'], 5);
         $posts = $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], 5); 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -36,19 +35,16 @@ class HomeController extends AbstractController
             'home' => $homeContent,
             'ofertas' => $ofertas,
             'destacados' => $destacados,
-            'comentarios' => $comentarios,
             'posts' => $posts,
         ]);
     }
 
      public function footer(EntityManagerInterface $entityManager)
     {
-        $ultimos = $entityManager->getRepository(Automovil::class)->findBy([], ['id' => 'DESC'], 3);
         $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
         $form = $this->createForm(NewsletterType::class);
         return $this->render('partials/footer.html.twig', [
             'datos' => $datos,
-            'ultimos' => $ultimos,
             'newsletter' => $form->createView(),
         ]);
     }

@@ -64,21 +64,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="recent-posts footer-item">
                     <h4>Últimos modelos</h4>
-                    {% for ultimo in ultimos %}
-                        <div class="media mb-4">
-                            <a class="pr-3" href="car-details.html">
-                                {% media ultimo.imagenDestacada, 'small' with {'class': 'media-object'} %}
-                            </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                    <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}) }) }}">{{ ultimo.marca }} {{ ultimo.modelo }}</a>
-                                </h5>
-                                <div class="listing-post-meta">
-                                    ${{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}) }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+                    {{ render(controller('App\\Controller\\LayoutController:getUltimosModelos')) }}
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
