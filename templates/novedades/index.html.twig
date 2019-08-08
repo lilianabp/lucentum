@@ -38,20 +38,10 @@
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
                     <!-- Search box -->
-                    <div class="widget search-box">
-                        <h3 class="sidebar-title">Search</h3>
-                        <div class="s-border"></div>
-                        <form class="form-inline form-search" method="GET">
-                            <div class="form-group">
-                                <label class="sr-only" for="textsearch2">Busca Novedades y Ofertas</label>
-                                <input type="text" class="form-control" id="textsearch2" name="search" placeholder="Busca Novedades y Ofertas">
-                            </div>
-                            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
+                    {% include 'layout/sidebarSearch.html.twig' %}
                     <!-- Recent posts start -->
                     <div class="widget recent-posts">
-                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <h3 class="sidebar-title">Últimos Modelos</h3>
                         {{ render(controller('App\\Controller\\LayoutController::getUltimosModelos')) }}
                     </div>
 
@@ -61,7 +51,7 @@
                         <div class="s-border"></div>
                         <ul class="tags">
                             {% for tag in tags %}
-                                <li><a href="{{ path('novedades', { 'tag': tag.slug }) }}">{{ tag.name }}</a></li>
+                                <li><a href="{{ path('novedades') }}">{{ tag.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

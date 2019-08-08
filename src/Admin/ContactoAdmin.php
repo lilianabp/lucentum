@@ -9,6 +9,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Form\Type\ModelListType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 final class ContactoAdmin extends AbstractAdmin
 {
@@ -31,7 +33,6 @@ final class ContactoAdmin extends AbstractAdmin
             ->add('id')
             ->add('titulo')
             ->add('subtitulo')
-            ->add('horario')
             ->add('metatitle')
             ->add('metadescription')
             ->add('_action', null, [
@@ -45,11 +46,17 @@ final class ContactoAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        $imagen = [
+            'btn_edit' => true,
+            'btn_delete' => true,
+            'btn_list' => false,
+            'label'=> 'Banner de sección',
+        ];
         $formMapper
-            ->add('id')
+            ->add('banner', ModelListType::class, $imagen)
             ->add('titulo')
             ->add('subtitulo')
-            ->add('horario')
+            ->add('horario', CKEditorType::class, [])
             ->add('metatitle')
             ->add('metadescription')
             ;

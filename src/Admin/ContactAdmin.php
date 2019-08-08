@@ -23,17 +23,6 @@ class ContactAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Contenido', ['class' => 'col-md-12'])
-                ->add('surname', TextType::class, [
-                    'label'=> 'Apellido',
-                    'required' => true,
-                    "attr" =>array(
-                        "autocomplete" => "off"
-                    ),
-                    'constraints' => array(
-                        new NotBlank(array('message' => 'No puede quedar vacío')),
-                        new Length(array('min' => 2, 'max' => 50)
-                    ))
-                ])
                 ->add('name', TextType::class, [
                     'label'=> 'Nombre',
                     'required' => true,
@@ -47,14 +36,9 @@ class ContactAdmin extends AbstractAdmin
                 ])
                 ->add('telephone', TelType::class, [
                     'label'=> 'Teléfono',
-                    'required' => true,
                     "attr" =>array(
                         "autocomplete" => "off"
                     ),
-                    'constraints' => array(
-                        new NotBlank(array('message' => 'No puede quedar vacío')),
-                        new Length(array('min' => 8, 'max' => 20)
-                    ))
                 ])
                 ->add('email', EmailType::class, [
                     'label'=> 'Email',
@@ -65,6 +49,17 @@ class ContactAdmin extends AbstractAdmin
                     'constraints' => array(
                         new NotBlank(array('message' => 'No puede quedar vacío')),
                         new Length(array('min' => 5, 'max' => 50)
+                    ))
+                ])
+                ->add('subject', TextType::class, [
+                    'label'=> 'Subject',
+                    'required' => true,
+                    "attr" =>array(
+                        "autocomplete" => "off"
+                    ),
+                    'constraints' => array(
+                        new NotBlank(array('message' => 'No puede quedar vacío')),
+                        new Length(array('min' => 2, 'max' => 50)
                     ))
                 ])
                 ->add('content', TextareaType::class, [
@@ -84,7 +79,7 @@ class ContactAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('surname', null, ['label'=> 'Apellido'])
+            ->add('subject', null, ['label'=> 'Apellido'])
             ->add('name', null, ['label'=> 'Nombre'])
             ->add('telephone', null, ['label'=> 'Teléfono'])
             ->add('email', null, ['label'=> 'Email'])
@@ -95,7 +90,7 @@ class ContactAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('surname', null, ['label'=> 'Apellido'])
+            ->add('subject', null, ['label'=> 'Apellido'])
             ->add('name', null, ['label'=> 'Nombre'])
             ->add('email', null, ['label'=> 'Email'])
         ;
@@ -110,7 +105,7 @@ class ContactAdmin extends AbstractAdmin
 
     public function getExportFields()
     {
-        return ['name', 'surname', 'telephone', 'email', 'content', 'createdAt'];
+        return ['name', 'subject', 'telephone', 'email', 'content', 'createdAt'];
     }
 
     public function getExportFormats()

@@ -24,7 +24,7 @@ class SearchType extends AbstractType
                 'placeholder' => 'Marca',
                 'required' => false,
                 'attr' => [
-                    'class'=>'selectpicker search-fields'
+                    'class'=>'form-control'
                 ]
             ])
             ->add('modelo', TextType::class, ['required' => false])
@@ -34,7 +34,7 @@ class SearchType extends AbstractType
                 'placeholder' => 'Combustible',
                 'required' => false,
                 'attr' => [
-                    'class'=>'selectpicker search-fields'
+                    'class'=>'form-control'
                 ]
             ])
             ->add('anio', TextType::class, ['required' => false])
@@ -48,7 +48,7 @@ class SearchType extends AbstractType
                 'placeholder' => 'Cambio',
                 'required' => false,
                 'attr' => [
-                    'class'=>'selectpicker search-fields'
+                    'class'=>'form-control'
                 ]
             ])
 

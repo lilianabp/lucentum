@@ -43,7 +43,7 @@ class AutomovilesController extends AbstractController
         $id = $request->get('id');
         $content = $entityManager->getRepository(ListadoAutomovil::class)->findOneBy(['id' => 1]);
         $automovil = $entityManager->getRepository(Automovil::class)->findOneBy(['id' => $id]);
-        $galeria = $automovil->getGaleria();
+        $galeria = ($automovil?$automovil->getGaleria():null);
         $medias = ($galeria?$automovil->getGaleria()->getGalleryHasMedias():[]);
         $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
 
@@ -57,12 +57,12 @@ class AutomovilesController extends AbstractController
     }
 
     /**
-    * @Route("/buscar-mi-automovil", name="buscarmiautomovil")
+    * @Route("/buscar", name="buscarmiautomovil")
     */
     public function search(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator) {
         $form = $this->createForm(SearchType::class);
         $results = $entityManager->getRepository(Automovil::class)->searchByAttr($request->request->get('search'));
-        $content = $entityManager->getRepository(ListadoAutomovil::class)->findBy(['id' => 1]);
+        $content = $entityManager->getRepository(ListadoAutomovil::class)->findOneBy(['id' => 1]);
         // pagination
         $paginated = $paginator->paginate(
             $results, /* query NOT result */

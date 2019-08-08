@@ -51,13 +51,10 @@
                     </div>
                 </div>
                 <!-- Heading 2 -->
-                <h3 class="heading-2">Comments Section</h3>
+                <h3 class="heading-2">Comentarios</h3>
                 <!-- Comments start -->
-                
-                    
-                
                 <ul class="comments">
-                    {% for comment in post.comments %}
+                    {% for comment in post.comments if comment.status == 1 %}
                     <li>
                         <div class="comment">
                             <div class="comment-author">
@@ -80,26 +77,22 @@
                 </ul>
                 <!-- Contact 2 start -->
                 <div class="contact-2 ca mb-50">
-                    <h3 class="heading-2">Contact Form</h3>
-                    <form action="#" method="GET" enctype="multipart/form-data">
+                    <h3 class="heading-2">Dejanos tu Comentario</h3>
+                    <div id="alert" class="mb-2"></div>
+                    <form action="" method="POST" id="commentForm">
                         <div class="row">
                             <div class="form-group name col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
+                                <input type="text" name="comment[name]" class="form-control" placeholder="Nombre*" required="required">
                             </div>
                             <div class="form-group email col-md-6">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="form-group number col-md-6">
-                                <input type="text" name="phone" class="form-control" placeholder="Number">
-                            </div>
-                            <div class="form-group number col-md-6">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <input type="email" name="comment[email]" class="form-control" placeholder="Email*" required="required">
                             </div>
                             <div class="form-group message col-md-12">
-                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
+                                <textarea class="form-control" name="comment[message]" placeholder="Mensaje*" required="required"></textarea>
                             </div>
+                           <input type="hidden" name="comment[post]" value="{{ post.id }}">
                             <div class="send-btn col-md-12">
-                                <button type="submit" class="btn btn-md button-theme">Send Message</button>
+                                <button type="submit" class="btn btn-md button-theme">Comentar</button>
                             </div>
                         </div>
                     </form>
@@ -108,20 +101,10 @@
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
                     <!-- Search box -->
-                    <div class="widget search-box">
-                        <h3 class="sidebar-title">Search</h3>
-                        <div class="s-border"></div>
-                        <form class="form-inline form-search" method="GET">
-                            <div class="form-group">
-                                <label class="sr-only" for="textsearch2">Looking for something</label>
-                                <input type="text" class="form-control" id="textsearch2" placeholder="Looking for something">
-                            </div>
-                            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
+                    {% include 'layout/sidebarSearch.html.twig' %}
                     <!-- Recent posts start -->
                     <div class="widget recent-posts">
-                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <h3 class="sidebar-title">Últimos Modelos</h3>
                             {{ render(controller('App\\Controller\\LayoutController::getUltimosModelos')) }}
                     </div>
                     
@@ -141,4 +124,33 @@
     </div>
 </div>
 <!-- Blog body end -->
+<script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('assets/js/jquery.serializeObject.min.js') }}"></script>
+<script>
+    //$(document).on("click", ".Subscribe-box .btn", function(e){
+    $("#commentForm").on('submit',(function(e) {
+      e.preventDefault();
+      // get the serialized properties and values of the form 
+      var form_data =  $( this ).serialize();
+
+      // the actual request to your newAction
+      $.ajax({
+        url: '{{ path('comment') }}',
+        type: 'POST',
+        dataType: 'json',
+        data: form_data,
+        success:function(response){
+            $("#alert").empty();
+            if (response.status == 'success') {
+                htmlPartial = '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+response.message+'</div>';
+            } else {
+                htmlPartial = '<div class="alert alert-danger mb-0" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+response.message+'</div>';
+            }
+            $("#alert").html(htmlPartial);
+            document.getElementById("commentForm").reset();
+        }
+      });
+    }));
+</script>
 {% endblock %}

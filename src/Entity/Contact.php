@@ -27,11 +27,11 @@ class Contact
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $surname;
+    private $subject;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     *
      */
     private $telephone;
 
@@ -64,14 +64,14 @@ class Contact
         return $this;
     }
 
-    public function getSurname(): ?string
+    public function getSubject(): ?string
     {
-        return $this->surname;
+        return $this->subject;
     }
 
-    public function setSurname(string $surname): self
+    public function setSubject(string $subject): self
     {
-        $this->surname = $surname;
+        $this->subject = $subject;
 
         return $this;
     }

@@ -7552,7 +7552,13 @@ table {
         display: none;
     }
 }
-
+.inline-search-area .search-col:first-child .form-control,
+.inline-search-area .search-col .form-control {
+    border-right: solid 1px #e0e0e0 !important;
+    border-radius: 0;
+    margin: 0 !important;
+    height: 100%!important;
+}
 
 
 

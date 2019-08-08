@@ -3,7 +3,7 @@
 
 {% block title %}{{ content.metatitle }}{% endblock %}
 {% block meta_description %}
-    <meta name="description" content="{{ content.metadescription}}">
+    <meta name="description" content="{{ content.metadescription }}">
 {% endblock %}
 
 {% block content %}
@@ -37,18 +37,6 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-12">
-                <!-- Option bar start -->
-                <div class="option-bar clearfix">
-                    <div class="sorting-options2">
-                        <span class="sort">Sort by:</span>
-                        <select class="selectpicker search-fields" name="default-order">
-                            <option>Default Order</option>
-                            <option>Precio Descendente</option>
-                            <option>Precio Ascendente</option>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="row">
                     {% for automovil in automoviles  %}
                     <div class="col-lg-6 col-md-6">
