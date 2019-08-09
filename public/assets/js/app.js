@@ -404,7 +404,7 @@ $(function () {
             '    <div class="color-plate purple-plate" data-color="purple"></div>\n' +
             '    <div class="color-plate brown-plate" data-color="brown"></div>\n' +
             '    <div class="color-plate olive-plate" data-color="olive"></div>\n' +
-            '    <div class="setting-button">\n' +
+            '    <div class="setting-button" style="display: none">\n' +
             '        <i class="fa fa-gear"></i>\n' +
             '    </div>\n' +
             '</div>';
