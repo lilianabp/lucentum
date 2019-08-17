@@ -37,6 +37,11 @@
             <li>
                 <i class="flaticon-car"></i> {{ automovil.color }}
             </li>
+            {% if automovil.potencia %}
+                <li>
+                    <i class="flaticon-gear"></i> {{ automovil.potencia }}
+                </li>
+            {% endif %}
         </ul>
     </div>
 </div>

@@ -152,6 +152,11 @@ class Automovil
      */
     private $activo;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $potencia;
+
  
 
     public function __toString() {
@@ -495,6 +500,18 @@ class Automovil
     public function setActivo(bool $activo): self
     {
         $this->activo = $activo;
+
+        return $this;
+    }
+
+    public function getPotencia(): ?string
+    {
+        return $this->potencia;
+    }
+
+    public function setPotencia(?string $potencia): self
+    {
+        $this->potencia = $potencia;
 
         return $this;
     }

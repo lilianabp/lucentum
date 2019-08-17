@@ -30,6 +30,7 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('modelo')
             ->add('destacado')
             ->add('oferta')
+            ->add('activo')
             ->add('cambio')
             ->add('combustible')
             ->add('estado')
@@ -94,6 +95,7 @@ final class AutomovilAdmin extends AbstractAdmin
         ];
         $formMapper
         ->with('Especificaciones', ['class' => 'col-md-4'])
+            ->add('activo')
             ->add('marca', EntityType::class, [
                 'class' => Marca::class,
                 'choice_label' => 'nombre',
@@ -112,6 +114,7 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('puertas')
             ->add('anio', null, ['label' => 'Año'])
             ->add('kilometraje')
+            ->add('potencia')
         ->end()
         ->with('Detalles', ['class' =>'col-md-4'])
             ->add('estado', EntityType::class, [

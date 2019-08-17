@@ -72,6 +72,11 @@
                             <li>
                                 <span>Kilometraje</span>{{ automovil.kilometraje }}km
                             </li>
+                            {% if automovil.potencia %}
+                                <li>
+                                    <span>Potencia</span>{{ automovil.potencia }}
+                                </li>
+                            {% endif %}
                             <li>
                                 <span>Color</span>{{ automovil.color }}
                             </li>
@@ -106,6 +111,11 @@
                                     <li>
                                         <i class="fa fa-check"></i>Kilometraje: {{ automovil.kilometraje }}KM
                                     </li>
+                                     {% if automovil.potencia %}
+                                        <li>
+                                            <i class="fa fa-check"></i>Potencia: {{ automovil.potencia }}
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -175,6 +185,11 @@
                             <li>
                                 <span>Kilometraje</span>{{ automovil.kilometraje }}km
                             </li>
+                            {% if automovil.potencia %}
+                                <li>
+                                    <span>Potencia</span>{{ automovil.potencia }}
+                                </li>
+                            {% endif %}
                             <li>
                                 <span>Color</span>{{ automovil.color }}
                             </li>
@@ -220,9 +235,9 @@
                 <h3 class="heading-2">Relacionados</h3>
             </div>
             {% for auto in automovil.relacionados %}
-            <div class="col-lg-4 col-md-6">
-                {% include 'layout/automovil.html.twig' %}
-            </div>
+                <div class="col-lg-4 col-md-6">
+                    {% include 'layout/automovil.html.twig' with {'automovil': auto} %}
+                </div>
         {% endfor %}
         </div>
     </div>
