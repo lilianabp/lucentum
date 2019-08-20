@@ -51,4 +51,9 @@ final class MarcaAdmin extends AbstractAdmin
             ->add('descripcion')
             ;
     }
+
+     protected $datagridValues = array(
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'nombre',
+    );
 }
