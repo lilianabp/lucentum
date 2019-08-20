@@ -96,7 +96,7 @@ input[type=checkbox]:checked + label:before{
                         <div class="col-md-12">
                             <div class="form-group message">
                                 {{ form_widget(form.consentimiento) }}
-                                <label for="contact_consentimiento">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a>Política de Privacidad</a></strong></label>
+                                <label for="contact_consentimiento">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a href="{{ path('privacidad') }}">Política de Privacidad</a></strong></label>
                             </div>
                         </div>
                         <div class="col-md-12">

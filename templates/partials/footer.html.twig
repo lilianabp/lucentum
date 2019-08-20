@@ -86,10 +86,10 @@
                         {{ form_errors(newsletter) }}
                         {{ form_widget(newsletter.email) }}
                         <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                        <p style="line-height: 20px;" class="mb-0 mt-2">{{ form_widget(newsletter.legal) }}
-                        <label for="newsletter_legal" style="display:inline; font-size:11px">Acepto las <strong><a href="{{ path("legal") }}">condiciones legales.</a></strong></label></p>
-                        <p style="line-height: 20px;" class="mb-0">{{ form_widget(newsletter.consentimiento) }}
-                        <label for="newsletter_consentimiento" style="display:inline; font-size:11px">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a>Política de Privacidad</a></strong></label>
+                        <p class="mb-0 mt-2">{{ form_widget(newsletter.legal) }}
+                        <label for="newsletter_legal">Acepto las <strong><a href="{{ path("legal") }}">condiciones legales.</a></strong></label></p>
+                        <p class="mb-0">{{ form_widget(newsletter.consentimiento) }}
+                        <label for="newsletter_consentimiento">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a href="{{ path('privacidad') }}">Política de Privacidad</a></strong></label>
                         {{ form_end(newsletter) }}</p>
                     </div>
                 </div>
@@ -100,6 +100,13 @@
         </div>
     </div>
 </footer>
+<style type="text/css">
+input[type=checkbox]:checked + label:before{
+    display: none!important;
+}
+.Subscribe-box p { line-height: 20px;  }
+.Subscribe-box label {display:inline; font-size:11px}
+</style>
 <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('assets/js/jquery.serializeObject.min.js') }}"></script>
