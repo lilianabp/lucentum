@@ -30,8 +30,9 @@
                         <div class="carousel-inner">
                             {% for data in medias %}
                             <div class="{% if loop.index == 1 %}active{% endif %} item carousel-item" data-slide-number="{{ loop.index - 1 }}">
-                                <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="slider-car">
-                                
+                                <a class="fancybox" rel="gallery1" href="{% path data.media, 'reference' %}" title="{{ automovil }}">
+                                    <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="slider-car">
+                                </a>
                             </div>
                             {% endfor %}
                             
