@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="TUD.2.O" resname="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>__resetting.flash.success</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="FC9PbSD" resname="archive_collection.meta_title">
+        <source>archive_collection.meta_title</source>
+        <target>__archive_collection.meta_title</target>
+      </trans-unit>
+      <trans-unit id="NqvWmL2" resname="archive_collection.meta_description">
+        <source>archive_collection.meta_description</source>
+        <target>__archive_collection.meta_description</target>
+      </trans-unit>
+      <trans-unit id="w79wWtO" resname="archive_tag.meta_title">
+        <source>archive_tag.meta_title</source>
+        <target>__archive_tag.meta_title</target>
+      </trans-unit>
+      <trans-unit id="BaMFOeg" resname="archive_tag.meta_description">
+        <source>archive_tag.meta_description</source>
+        <target>__archive_tag.meta_description</target>
+      </trans-unit>
+      <trans-unit id="Wf0kQPw" resname="archive_year.meta_title">
+        <source>archive_year.meta_title</source>
+        <target>__archive_year.meta_title</target>
+      </trans-unit>
+      <trans-unit id="FPkKqYl" resname="archive_year.meta_description">
+        <source>archive_year.meta_description</source>
+        <target>__archive_year.meta_description</target>
+      </trans-unit>
+      <trans-unit id="J.a9sNJ" resname="archive_month.meta_title">
+        <source>archive_month.meta_title</source>
+        <target>__archive_month.meta_title</target>
+      </trans-unit>
+      <trans-unit id="36cWEwy" resname="archive_month.meta_description">
+        <source>archive_month.meta_description</source>
+        <target>__archive_month.meta_description</target>
+      </trans-unit>
+      <trans-unit id="mvFE3v1" resname="archive_day.meta_title">
+        <source>archive_day.meta_title</source>
+        <target>__archive_day.meta_title</target>
+      </trans-unit>
+      <trans-unit id="W_qqTbE" resname="archive_day.meta_description">
+        <source>archive_day.meta_description</source>
+        <target>__archive_day.meta_description</target>
+      </trans-unit>
+      <trans-unit id="MxRgFbQ" resname="archive.meta_title">
+        <source>archive.meta_title</source>
+        <target>__archive.meta_title</target>
+      </trans-unit>
+      <trans-unit id="rl15xNr" resname="archive.meta_description">
+        <source>archive.meta_description</source>
+        <target>__archive.meta_description</target>
+      </trans-unit>
+      <trans-unit id="vHnY1YT" resname="sidemenu.link_edit_post">
+        <source>sidemenu.link_edit_post</source>
+        <target>__sidemenu.link_edit_post</target>
+      </trans-unit>
+      <trans-unit id="rSq.v9g" resname="sidemenu.link_view_comments">
+        <source>sidemenu.link_view_comments</source>
+        <target>__sidemenu.link_view_comments</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
