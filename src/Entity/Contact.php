@@ -47,6 +47,16 @@ class Contact
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $legal;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $consentimiento;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +118,30 @@ class Contact
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getLegal(): ?bool
+    {
+        return $this->legal;
+    }
+
+    public function setLegal(bool $legal): self
+    {
+        $this->legal = $legal;
+
+        return $this;
+    }
+
+    public function getConsentimiento(): ?bool
+    {
+        return $this->consentimiento;
+    }
+
+    public function setConsentimiento(bool $consentimiento): self
+    {
+        $this->consentimiento = $consentimiento;
 
         return $this;
     }

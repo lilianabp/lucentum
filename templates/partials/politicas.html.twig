@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Sub banner start -->
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path contacto.banner, 'reference' %});background-size: cover;
+    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Servicios</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{{ path('home') }}">Home</a></li>
+                {% if flag == 'politica_cookies' %}
+                    <li class="active">Política de Cookies</li>
+                {% elseif flag == 'aviso_legal' %}
+                    <li class="active">Aviso Legal</li>
+                {% else %}
+                    <li class="active">Política de Privacidad</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+<!-- Politicas start -->
+<div class="services content-area">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title text-center">
+            <h1>{{ content.titulo }}</h1>
+        </div>
+        <div class="row">
+                <div class="col">
+                    <div class="service-info">
+                        <div class="detail">
+                            {% if flag == 'politica_cookies' %}
+                                <p>{{ content.politicaCookies|raw }}</p>
+                            {% elseif flag == 'aviso_legal' %}
+                                <p>{{ content.avisoLegal|raw }}</p>
+                            {% else %}
+                                <p>{{ content.politicaPrivacidad|raw }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- Politicas end -->
+{% endblock %}

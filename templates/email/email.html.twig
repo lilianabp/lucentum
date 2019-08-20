@@ -1,18 +1,21 @@
 <div class="container">
 	<div class="row">
-		<img src="{{ asset('favicon.ico') }}" class="img-responsive">
+		<img src="{{ asset('assets/images/logoCompleto.png') }}" class="img-responsive">
 		<div class="col-md-12">
 			<h5 class="text-center">
-				Gracias por Registrarte en MOḦURE!
+				Has recibido un comentario!
 			</h5>
 			<p>
-				Para comenzar dirigete al siguiente link de confirmación: <a href="{{ url('login') }}"> Ingresar a mi cuenta </a>.<br>
+				Noticia: {{ datos.post.title }}
 			</p>
 			<p>
-				Nombre de Usuario : {{ user.email }} <br>
+				Nombre: {{ datos.name }} <br>
 			</p>
 			<p>
-				Muchas Gracias por Registrarte en www.mohure.com
+				Email: {{ datos.email }}
+			</p>
+			<p>
+				Comentario: {{ datos.message }}
 			</p>
 		</div>
 	</div>

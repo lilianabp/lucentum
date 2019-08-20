@@ -9,24 +9,25 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-final class NewsletterAdmin extends AbstractAdmin
+final class CookieAdmin extends AbstractAdmin
 {
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
             ->add('id')
-            ->add('email')
+            ->add('titulo')
+            ->add('politica_cookies')
             ;
     }
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('email')
-            ->add('consentimiento', null, ['label'=> 'Consentimimento'])
-            ->add('legal',  null, ['label'=> 'Aviso legal'])
+            ->add('id')
+            ->add('titulo')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -39,9 +40,9 @@ final class NewsletterAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('email')
-            ->add('consentimiento')
-            ->add('legal')
+            ->add('titulo')
+            ->add('politica_cookies', CKEditorType::class, array(
+            ))
             ;
     }
 
@@ -49,12 +50,8 @@ final class NewsletterAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('email')
+            ->add('titulo')
+            ->add('politica_cookies')
             ;
     }
-
-    protected $datagridValues = array(
-        '_sort_order' => 'DESC',
-        '_sort_by' => 'id',
-    );
 }

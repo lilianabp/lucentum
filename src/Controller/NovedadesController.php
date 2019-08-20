@@ -12,6 +12,7 @@ use App\Application\Sonata\NewsBundle\Entity\Post;
 use App\Application\Sonata\ClassificationBundle\Entity\Tag;
 use App\Application\Sonata\NewsBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Service\EmailService;
 
 class NovedadesController extends AbstractController
 {
@@ -89,7 +90,7 @@ class NovedadesController extends AbstractController
      /**
     * @Route("/comment", name="comment")
     */
-    public function commentPost(Request $request, EntityManagerInterface $entityManager) {
+    public function commentPost(Request $request, EntityManagerInterface $entityManager, EmailService $emailService) {
         if ($request->get('comment')) {
             $newcomment = $request->get('comment');
             $post = $entityManager->getRepository(Post::class)->findOneBy(['id'=>$newcomment['post']]);
@@ -104,8 +105,14 @@ class NovedadesController extends AbstractController
             $entityManager->persist($comment);
             try {
                 $entityManager->flush();
-                $message = "Tu comentario se ha enviado con éxito. Un moderador lo evaluará y publicará.";
-                $status = "success";
+                $sendEmail = $emailService->sendEmail('email/email.html.twig', 'Has recibido un comentario', 'lilianabpereira@gmail.com', 'lilianabpereira@gmail.com', $comment);
+                if ($sendEmail == 'success') {
+                    $message = "Tu comentario se ha enviado con éxito. Un moderador lo evaluará y publicará.";
+                    $status = "success";
+                } else {
+                    $status = 'error';
+                    $message = 'Ha ocurrido un error al enviar su comentario';
+                }
             } catch (\Exception $e) {
                     $message = $e->getMessage();
             }   

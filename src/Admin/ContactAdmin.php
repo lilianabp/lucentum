@@ -72,6 +72,8 @@ class ContactAdmin extends AbstractAdmin
                         new NotBlank(array('message' => 'No puede quedar vacío')),
                     )
                 ])
+            ->add('consentimiento')
+            ->add('legal')
             ->end()
         ;
     }
@@ -84,6 +86,8 @@ class ContactAdmin extends AbstractAdmin
             ->add('telephone', null, ['label'=> 'Teléfono'])
             ->add('email', null, ['label'=> 'Email'])
             ->add('content', null, ['label'=> 'Mensaje'])
+            ->add('consentimiento', null, ['label'=> 'Consentimimento'])
+            ->add('legal',  null, ['label'=> 'Aviso legal'])
         ;
     }
 
@@ -112,5 +116,10 @@ class ContactAdmin extends AbstractAdmin
     {
         return ['csv', 'xls'];
     }
+
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 }
 ?>

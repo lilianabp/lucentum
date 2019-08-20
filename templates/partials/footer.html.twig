@@ -58,6 +58,15 @@
                         <li>
                             <a href="{{ path('novedades') }}">Noticias</a>
                         </li>
+                        <li>
+                            <a href="{{ path('cookies') }}">Política de Cookies</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('privacidad') }}">Política de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('legal') }}">Aviso Legal</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -75,9 +84,13 @@
                          <div id="alert" class="mb-2"></div>
                         {{ form_start(newsletter, {'attr': {'class': 'form-inline', 'id': 'newsletterForm'}}) }}
                         {{ form_errors(newsletter) }}
-                        {{ form_widget(newsletter) }}
+                        {{ form_widget(newsletter.email) }}
                         <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                        {{ form_end(newsletter, {'render_rest': false} ) }}
+                        <p style="line-height: 20px;" class="mb-0 mt-2">{{ form_widget(newsletter.legal) }}
+                        <label for="newsletter_legal" style="display:inline; font-size:11px">Acepto las <strong><a href="{{ path("legal") }}">condiciones legales.</a></strong></label></p>
+                        <p style="line-height: 20px;" class="mb-0">{{ form_widget(newsletter.consentimiento) }}
+                        <label for="newsletter_consentimiento" style="display:inline; font-size:11px">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a>Política de Privacidad</a></strong></label>
+                        {{ form_end(newsletter) }}</p>
                     </div>
                 </div>
             </div>

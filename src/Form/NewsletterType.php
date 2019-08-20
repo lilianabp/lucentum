@@ -6,6 +6,7 @@ use App\Entity\Newsletter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class NewsletterType extends AbstractType
 {
@@ -19,10 +20,15 @@ class NewsletterType extends AbstractType
                     'class' => 'form-control mb-sm-0',
                     'id' => 'inlineFormInputName3',
                     'placeholder' => 'Email',
-                    'style' => 'width: 100%!important;'
                 ],
                 
             ])
+            ->add('legal', CheckboxType::class, [
+                'required' => true,
+            ])
+            ->add('consentimiento', CheckboxType::class, array(
+                'required'=>false,
+            ))
         ;
     }
 

@@ -3,6 +3,11 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+<style type="text/css">
+input[type=checkbox]:checked + label:before{
+    display: none!important;
+}
+</style>
 <!-- Sub banner start -->
 <div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
     height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
@@ -80,6 +85,18 @@
                         <div class="col-md-12">
                             <div class="form-group message">
                                 {{ form_widget(form.content) }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group message">
+                                {{ form_widget(form.legal) }}
+                                <label for="contact_legal">Acepto las <strong><a href="{{ path("legal") }}">condiciones legales.</a></strong></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group message">
+                                {{ form_widget(form.consentimiento) }}
+                                <label for="contact_consentimiento">Consiento recibir emails comerciales con Ofertas y Novedades. Más infomación en <strong><a>Política de Privacidad</a></strong></label>
                             </div>
                         </div>
                         <div class="col-md-12">

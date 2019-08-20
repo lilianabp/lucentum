@@ -34,6 +34,9 @@ sonata_admin:
                     - admin.listado_servicio
                     - admin.novedad
                     - admin.contacto
+                    - admin.legal
+                    - admin.cookie
+                    - admin.politica_privacidad
             sonata_user:
                 label: Usuarios
                 icon: '<i class="fa fa-user-o"></i>'

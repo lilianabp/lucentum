@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ContactType extends AbstractType
 {
@@ -70,7 +71,13 @@ class ContactType extends AbstractType
                     'constraints' => array(
                         new NotBlank(array('message' => 'It can not be empty')),
                     ))
-            );
+            )
+            ->add('legal', CheckboxType::class, [
+                'required' => true,
+            ])
+            ->add('consentimiento', CheckboxType::class, array(
+                'required'=>false,
+            ));
 
     }
 

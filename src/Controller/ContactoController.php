@@ -11,6 +11,7 @@ use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Service\EmailService;
 
 class ContactoController extends AbstractController
 {
@@ -34,7 +35,7 @@ class ContactoController extends AbstractController
     /**
      * @Route("/send", name="sendContact")
      */
-    public function sendContact(Request $request, EntityManagerInterface $entityManager)
+    public function sendContact(Request $request, EntityManagerInterface $entityManager, EmailService $emailService)
     {
     	$contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -45,8 +46,14 @@ class ContactoController extends AbstractController
 	        $entityManager->persist($contact);
 	        try {
 	            $entityManager->flush();
-	            $status = "success";
-	            $message = "Contacto enviado con éxito";
+                $sendEmail = $emailService->sendEmail('email/email_contact.html.twig', 'Has recibido una consulta', 'lilianabpereira@gmail.com', 'lilianabpereira@gmail.com', $contact);
+                if ($sendEmail == 'success') {
+                    $message = "Contacto enviado con éxito";
+                    $status = "success";
+                } else {
+                    $status = 'error';
+                    $message = 'Ha ocurrido un error al enviar su consulta';
+                }
 	        } catch (\Exception $e) {
 	                $message = $e->getMessage();
 	        }   

@@ -179,3 +179,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Novedades }
         public: true
+
+    admin.legal:
+        class: App\Admin\LegalAdmin
+        arguments: [~, App\Entity\Legal, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Aviso Legal }
+        public: true
+
+    admin.cookie:
+        class: App\Admin\CookieAdmin
+        arguments: [~, App\Entity\Cookie, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Política de Cookies }
+        public: true
+
+    admin.politica_privacidad:
+        class: App\Admin\PoliticaPrivacidadAdmin
+        arguments: [~, App\Entity\PoliticaPrivacidad, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Política de Privacidad }
+        public: true

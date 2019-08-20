@@ -53,6 +53,7 @@
             <script  src="{{ asset('assets/js/respond.min.js') }}"></script>
             <![endif]-->
             <link href="{{ asset('assets/scss/main.css') }}" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
         {% endblock %}
     </head>
 {% endblock %}
@@ -148,6 +149,26 @@
         <script  src="{{asset('assets/js/ie10-viewport-bug-workaround.js')}}"></script>
         <!-- Custom javascript -->
         <script  src="{{asset('assets/js/ie10-viewport-bug-workaround.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+        <script>
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#000"
+            },
+            "button": {
+              "background": "#f0151f"
+            }
+          },
+          "theme": "classic",
+          "content": {
+            "message": "En automovileslucentum.com utilizamos cookies para que tu experiencia en nuestra web sea la mejor posible.",
+            "dismiss": "Aceptar",
+            "link": "Leer más",
+            "href": "{{ path('cookies') }}"
+          }
+        });
+        </script>
     {% endblock %}
     </body>
 {% endblock %}
