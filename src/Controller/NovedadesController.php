@@ -87,7 +87,7 @@ class NovedadesController extends AbstractController
         ]);	
     }
 
-     /**
+    /**
     * @Route("/comment", name="comment")
     */
     public function commentPost(Request $request, EntityManagerInterface $entityManager, EmailService $emailService) {
@@ -105,7 +105,7 @@ class NovedadesController extends AbstractController
             $entityManager->persist($comment);
             try {
                 $entityManager->flush();
-                $sendEmail = $emailService->sendEmail('email/email.html.twig', 'Has recibido un comentario', 'lilianabpereira@gmail.com', 'lilianabpereira@gmail.com', $comment);
+                $sendEmail = $emailService->sendEmail('email/email.html.twig', 'Has recibido un comentario', 'testdinamic51@gmail.com', 'lilianabpereira@gmail.com', $comment);
                 if ($sendEmail == 'success') {
                     $message = "Tu comentario se ha enviado con éxito. Un moderador lo evaluará y publicará.";
                     $status = "success";

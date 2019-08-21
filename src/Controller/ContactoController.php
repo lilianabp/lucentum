@@ -46,7 +46,7 @@ class ContactoController extends AbstractController
 	        $entityManager->persist($contact);
 	        try {
 	            $entityManager->flush();
-                $sendEmail = $emailService->sendEmail('email/email_contact.html.twig', 'Has recibido una consulta', 'lilianabpereira@gmail.com', 'lilianabpereira@gmail.com', $contact);
+                $sendEmail = $emailService->sendEmail('email/email_contact.html.twig', 'Has recibido una consulta', 'testdinamic51@gmail.com', 'testdinamic51@gmail.com', $contact);
                 if ($sendEmail == 'success') {
                     $message = "Contacto enviado con éxito";
                     $status = "success";
