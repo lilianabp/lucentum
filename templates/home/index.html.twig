@@ -125,11 +125,11 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-12 col-pad">
                                 <div class="category">
-                                    <div class="category_bg_box" style="background: url({% path automovil.imagenDestacada, 'reference' %})">
+                                    <div class="category_bg_box" style="background: url({% path automovil.imagenDestacada, 'big' %}) no-repeat top left; background-size:cover">
                                         <div class="category-overlay">
                                             <div class="category-content">
                                                 <h3 class="category-title">
-                                                    <a href="car-list-rightside.html">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                    <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                                 </h3>
                                                 <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                             </div>
@@ -144,11 +144,11 @@
                     {% if loop.index == 3 %}
                         <div class="col-lg-4 col-md-12 col-pad">
                             <div class="category">
-                                <div class="category_bg_box category_long_bg" style="background: url({% path automovil.imagenDestacada, 'reference' %})">
+                                <div class="category_bg_box category_long_bg" style="background: url({% path automovil.imagenDestacada, 'big' %}) no-repeat center center; background-size:cover">
                                     <div class="category-overlay">
                                         <div class="category-content">
                                             <h3 class="category-title">
-                                                <a href="#">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                             </h3>
                                             <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                         </div>
@@ -164,11 +164,11 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-12 col-pad">
                                         <div class="category">
-                                            <div class="category_bg_box" style="background: url({% thumbnail automovil.imagenDestacada, 'small' %})">
+                                            <div class="category_bg_box" style="background: url({% path automovil.imagenDestacada, 'big' %}) no-repeat top left; background-size:cover">
                                                 <div class="category-overlay">
                                                     <div class="category-content">
                                                         <h3 class="category-title">
-                                                            <a href="car-list-rightside.html">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                                         </h3>
                                                         <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                                     </div>
