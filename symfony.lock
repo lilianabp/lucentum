@@ -319,6 +319,18 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "silasjoisten/sonata-multiupload-bundle": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "4e624e746b1d630cfa6e39b64fccc5c46fc5acda"
+        },
+        "files": [
+            "config/packages/sonata_multi_upload.yaml"
+        ]
+    },
     "sonata-project/admin-bundle": {
         "version": "3.31",
         "recipe": {

@@ -6,6 +6,7 @@
 parameters:
     locale: 'en'
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    sonata.media.admin.media.controller: 'SilasJoisten\Sonata\MultiUploadBundle\Controller\MultiUploadController'
 
 services:
     # default configuration for services in *this* file

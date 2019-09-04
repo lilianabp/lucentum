@@ -81,6 +81,22 @@ final class AutomovilAdmin extends AbstractAdmin
             'btn_list' => false,
             'label'=> 'Imagen destacada para listados',
         ];
+
+        $image23 = $this->getSubject();
+        $image = $image23->getImagenDestacada();
+        //dump($image->getReference());die;
+        // use $fileFieldOptions so we can add other options to the field
+        //$fileFieldOptions = ['required' => false];
+        if ($image && ($webPath = $image->getWebPath())) {
+            // get the container so the full path to the image can be set
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request_stack')->getCurrentRequest()->getBasePath().'/'.$webPath;
+
+            // add a 'help' option containing the preview's img tag
+            $imagen['help'] = '<img src="'.$fullPath.'" class="admin-preview"/>';
+            dump($fullPath);die;
+        }
+
         $video = [
             'btn_edit' => true,
             'btn_delete' => true,

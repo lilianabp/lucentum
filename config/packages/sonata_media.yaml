@@ -1,6 +1,8 @@
 sonata_media:
     db_driver: doctrine_orm
     default_context: default
+    force_disable_category: true # true, if you really want to disable the relation with category
+    category_manager:       sonata.media.manager.category.default  # null or "sonata.media.manager.category.default" if classification bundle exists
     contexts:
         default:
             providers:
