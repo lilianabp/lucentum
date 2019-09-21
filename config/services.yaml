@@ -201,3 +201,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Contenido de Secciones, label: Política de Privacidad }
         public: true
+    sonata.media.provider.file:
+        class: App\Application\Sonata\MediaBundle\Entity\FileProvider
+        arguments:
+            - sonata.media.provider.file
+            - sonata.media.filesystem.local
+            - sonata.media.cdn.server
+            - sonata.media.generator.default
+            - sonata.media.thumbnail.format
+            - ['jpg', 'png', 'jpeg', 'pdf', 'txt', 'rtf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pttx', 'odt', 'odg', 'odp', 'ods', 'odc', 'odf', 'odb', 'csv', 'xml']
+            - ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png','application/pdf', 'application/x-pdf', 'application/rtf', 'text/html', 'text/rtf', 'text/plain']
+        tags:
+            - { name: sonata.media.provider, multi_upload: true }
+        calls:
+            - [ setTemplates, [ { helper_thumbnail: SonataMediaBundle:Provider:thumbnail.html.twig, helper_view: SonataMediaBundle:Provider:view_youtube.html.twig } ] ]
+        public: true
+    Sonata\MediaBundle\Entity\MediaManager:
+        alias: sonata.media.manager.media
+    Sonata\MediaBundle\Entity\GalleryManager:
+        alias: sonata.media.manager.gallery
+    Sonata\MediaBundle\Admin\GalleryAdmin:
+        alias: sonata.media.admin.gallery
