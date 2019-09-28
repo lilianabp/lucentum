@@ -18,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="UTF-8">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link rel="icon" href="{{ asset('assets/images/LOGO-BENUREN-MENU.png') }}">
+        <link rel="icon" href="{{ asset('assets/images/logoCompleto1.png') }}">
     {% endblock %}
 
     <meta data-sonata-admin='{{ {
@@ -346,6 +346,95 @@
         </script>
     {% endblock %}
 {% endif %}
+
+<script>
+    function removeImage(div, dataImage, dataAuto) {
+        // remover en base al nombre de archivo
+
+        var param = {};
+        param.dataImage = dataImage;
+        param.dataAuto = dataAuto;
+        $.ajax({
+            method: 'GET',
+            url: "{{ path('ajax_remove_image') }}",
+            data: { data_array: JSON.stringify(param) }
+        }).done(function(response) {
+            div.parentNode.remove();
+        });
+    }
+
+    var count = 0;
+    function handleFileSelect(event) {
+        //Check File API support
+        if (window.File && window.FileList && window.FileReader) {
+            var files = event.target.files; //FileList object
+
+            for (var x = 0; x < files.length; x++) {
+                var file = files[x];
+
+                if (!file.type.match('image')) continue;
+
+                filesToUpload.push({
+                    id: count,
+                    file: file
+                });
+                count++;
+
+                var picReader = new FileReader();
+                picReader.onloadend = (function(file) {
+                    return function(evt) {
+                        createListItem(evt, file)
+                    };
+                })(file);
+                //Read the image
+                picReader.readAsDataURL(file);
+
+            }
+        } else {
+            console.log("Your browser does not support File API");
+        }
+    }
+
+    function createListItem(evt, nameFile){
+        var name = nameFile.name;
+        var picFile = evt.target;
+        var div = document.createElement("div");
+        div.setAttribute('style','display: inline-block; width: 45%; margin-bottom: 10px; height: 100px; text-align: center');
+        div.innerHTML = '<img src=" ' + picFile.result + '" style="width: auto; max-width: 90%; max-height: 90%;display: inline-block;">\n' +
+            '<button onclick="removePreview(this, `' + name + '` )" type="button" class="close removeFile" aria-hidden="true" style="display: inline; float: right;">×</button>\n';
+        var output = document.getElementById("result");
+        output.append(div);
+    }
+
+
+    function removePreview(dataInput, fileId){
+        for (var i = 0; i < filesToUpload.length; ++i) {
+            if (filesToUpload[i].file.name === fileId){
+                filesToUpload.splice(i, 1);
+            }
+        }
+        dataInput.parentNode.remove();
+    }
+
+    var filesToUpload = [];
+
+    var brochure = document.getElementById('s71a1aa68f6_brochure');
+    if (brochure){
+        brochure.addEventListener('change', handleFileSelect, false);
+
+        $("form").one('submit', function(e) {
+        e.preventDefault();
+            let list = new DataTransfer();
+            for (var i = 0, len = filesToUpload.length; i < len; i++) {
+                list.items.add(filesToUpload[i].file);
+
+                let myFileList = list.files;
+                brochure.files = myFileList;
+            }
+            $(this).submit();
+         });
+    }
+</script>
 
 </body>
 </html>

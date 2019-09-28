@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -18,6 +19,7 @@ use App\Entity\Combustible;
 use App\Entity\Condicion;
 use App\Entity\Estado;
 use App\Entity\Automovil;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 final class AutomovilAdmin extends AbstractAdmin
 {
@@ -134,7 +136,13 @@ final class AutomovilAdmin extends AbstractAdmin
             ->add('imagen_destacada', ModelListType::class, $imagen)
             ->add('destacado')
             ->add('video', ModelListType::class, $video)
-            ->add('galeria', ModelListType::class, $galeria)
+            ->add('brochure', FileType::class, [
+                'mapped' =>false,
+                'required' => false,
+                'label' => 'Galería de imágenes ficha de Automóvil',
+                'help' => 'Actualice para guardar nuevas imágenes',
+                'multiple' => true
+            ])
         ->end()
         ->add('relacionados', EntityType::class, [
             'class' => Automovil::class,
@@ -143,6 +151,7 @@ final class AutomovilAdmin extends AbstractAdmin
         ])
             ;
     }
+
 
     protected function configureShowFields(ShowMapper $showMapper): void
     {

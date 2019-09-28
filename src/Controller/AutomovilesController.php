@@ -43,15 +43,15 @@ class AutomovilesController extends AbstractController
         $id = $request->get('id');
         $content = $entityManager->getRepository(ListadoAutomovil::class)->findOneBy(['id' => 1]);
         $automovil = $entityManager->getRepository(Automovil::class)->findOneBy(['id' => $id]);
-        $galeria = ($automovil?$automovil->getGaleria():null);
-        $medias = ($galeria?$automovil->getGaleria()->getGalleryHasMedias():[]);
+        $galeria = ($automovil?$automovil->getFiles():null);
+        //$medias = ($galeria?$automovil->getGaleria()->getGalleryHasMedias():[]);
         $datos = $entityManager->getRepository(DatosEmpresa::class)->findOneBy(['id' => 1]);
 
     	return $this->render('automoviles/show.html.twig', [
             'controller_name' => 'AutomovilesController',
             'content'=>$content,
             'automovil'=>$automovil,
-            'medias'=>$medias,
+            'medias'=>$galeria,
             'datos'=>$datos
         ]);
     }

@@ -30,8 +30,8 @@
                         <div class="carousel-inner">
                             {% for data in medias %}
                             <div class="{% if loop.index == 1 %}active{% endif %} item carousel-item" data-slide-number="{{ loop.index - 1 }}">
-                                <a class="fancybox" rel="gallery1" href="{% path data.media, 'reference' %}" title="{{ automovil }}">
-                                    <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="slider-car">
+                                <a class="fancybox" rel="gallery1" href="{{ asset('upload/media/automoviles/'~data) }}" title="{{ automovil }}">
+                                    <img src="{{ asset('upload/media/automoviles/'~data) }}" class="img-fluid" alt="slider-car">
                                 </a>
                             </div>
                             {% endfor %}
@@ -43,7 +43,7 @@
                             {% for data in medias %}
                             <li class="list-inline-item {% if loop.index == 1 %}active{% endif %}">
                                 <a id="carousel-selector-{{ loop.index - 1 }}" {% if loop.index == 1 %}class="selected"{% endif %} data-slide-to="{{ loop.index - 1 }}" data-target="#carDetailsSlider">
-                                    <img src="{% path data.media, 'reference' %}" class="img-fluid" alt="small-car">
+                                    <img src="{{ asset('upload/media/automoviles/'~data) }}" class="img-fluid" alt="small-car">
                                 </a>
                             </li>
                         

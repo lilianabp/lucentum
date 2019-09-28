@@ -48,6 +48,7 @@ sonata_admin:
         user_block: 'Block\user_menu.html.twig'
         layout: 'Block\standard_layout.html.twig'
         search: '@SonataAdmin/Core/search.html.twig'
+
     security:
         handler: sonata.admin.security.handler.role
 

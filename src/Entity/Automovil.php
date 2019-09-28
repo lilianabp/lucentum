@@ -122,10 +122,32 @@ class Automovil
      */
     private $video;
 
+//    /**
+//     * @ORM\ManyToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", inversedBy="automovil" ,cascade={"persist", "remove"})
+//     */
+//    private $galeria;
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery", cascade={"persist", "remove"})
+     * @var array
+     * @ORM\Column(type="array", nullable=true)
      */
-    private $galeria;
+    protected $files = [];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFiles(array $files = [])
+    {
+        $this->files = $files;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Automovil", inversedBy="relacionados")
@@ -401,18 +423,18 @@ class Automovil
 
         return $this;
     }
-
-    public function getGaleria(): ?Gallery
-    {
-        return $this->galeria;
-    }
-
-    public function setGaleria(?Gallery $galeria): self
-    {
-        $this->galeria = $galeria;
-
-        return $this;
-    }
+//
+//    public function getGaleria(): ?Gallery
+//    {
+//        return $this->galeria;
+//    }
+//
+//    public function setGaleria(?Gallery $galeria): self
+//    {
+//        $this->galeria = $galeria;
+//
+//        return $this;
+//    }
 
     /**
      * @return Collection|self[]

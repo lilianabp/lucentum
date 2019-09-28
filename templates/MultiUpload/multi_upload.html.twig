@@ -1,0 +1,194 @@
+{% extends '@SonataAdmin/CRUD/action.html.twig' %}
+
+{% block title %}
+    {{ 'title'|trans({}, 'SonataMultiUploadBundle') }}
+{% endblock %}
+
+{% block content %}
+    <div class="box box-solid">
+        <div class="box-body">
+            <div class="alert alert-dismissible hidden">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-warning"></i></h4>
+                <div class="text"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        {{ form_start(form, {attr:{ id : form.vars.id }}) }}
+                        <div class="dm-uploader {{ form.vars.id }}">
+                            <div class="col-md-4 col-md-push-4">
+                                <h4 class="text-muted text-center title">
+                                    <span class="mb-5">{{ 'drag_and_drop'|trans({}, 'SonataMultiUploadBundle') }}</span>
+                                    <a class="btn btn-primary btn-sm btn-select-files">
+                                        <span>{{ 'open_filebrowser'|trans({}, 'SonataMultiUploadBundle') }}</span>
+                                        {{ form_widget(form.binaryContent, {label: false}) }}
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <ul class="list-group list-unstyled list-files" id="files">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            let cancelRedirect = false;
+            let uploadedMediaIds = [];
+            $('div.{{ form.vars.id }}').dmUploader({
+                url: '{{ form.vars.action|raw }}',
+                maxFileSize: {{ maxUploadFilesize }},
+                {% if provider.allowedExtensions is defined %}
+                extFilter: {{ provider.allowedExtensions|json_encode|raw }},
+                {% endif %}
+                {% if provider.allowedMimeTypes is defined %}
+                allowedTypes: '{{ provider.allowedMimeTypes|join('|')|default('*') }}',
+                {% endif %}
+                onDragEnter: function () {
+                    $(this).addClass('drag');
+                },
+                onDragLeave: function () {
+                    $(this).removeClass('drag');
+                },
+                onNewFile: function (id, file) {
+                    addFile(id, file);
+                },
+                onBeforeUpload: function (id) {
+                    setStatus(id, 'uploading', '{{ 'uploading'|trans({}, 'SonataMultiUploadBundle') }}...');
+                    setProgress(id, 0, '', true);
+                },
+                onUploadCanceled: function (id) {
+                    setStatus(id, 'warning', '{{ 'canceled'|trans({}, 'SonataMultiUploadBundle') }}');
+                    setProgress(id, 0, 'warning', false);
+                },
+                onUploadProgress: function (id, percent) {
+                    setProgress(id, percent);
+                },
+                onUploadSuccess: function (id, data) {
+                    setStatus(id, 'success', '{{ 'upload_complete'|trans({}, 'SonataMultiUploadBundle') }}');
+                    setProgress(id, 100, 'success', false);
+                    setImage(id, data.path);
+                    setEditUrl(id, data.edit);
+                    uploadedMediaIds.push(data.id)
+                },
+                onUploadError: function (id, xhr, status, message) {
+                    setStatus(id, 'danger', message);
+                    setProgress(id, 0, 'danger', false);
+                    cancelRedirect = true;
+                },
+                onFileTypeError: function (file) {
+                    setNotification('danger', '<b>' + file.name + '</b> {{ 'file_type_error'|trans({}, 'SonataMultiUploadBundle') }}');
+                    cancelRedirect = true;
+                },
+                onFileSizeError: function (file) {
+                    setNotification('danger', '<b>' + file.name + '</b> {{ 'file_size_error'|trans({}, 'SonataMultiUploadBundle') }}');
+                    cancelRedirect = true;
+                },
+                onFileExtError: function (file) {
+                    setNotification('danger', '<b>' + file.name + '</b> {{ 'file_extension_error'|trans({}, 'SonataMultiUploadBundle') }}');
+                    cancelRedirect = true;
+                },
+                {% if redirectTo %}
+                onComplete() {
+                    if(cancelRedirect) {
+                        if(!confirm('{{ 'confirm_leaving_page'|trans({}, 'SonataMultiUploadBundle') }}')) {
+                            return;
+                        }
+                    }
+
+                    var url = '{{ path(redirectTo) }}' + '?idx=' +encodeURIComponent(JSON.stringify(uploadedMediaIds));
+                    window.location.replace(url)
+                }
+                {% endif %}
+            });
+
+        });
+
+        function addFile(id, file) {
+            var template = $('#files-template').text();
+            var $template = $(template);
+            $template.find('a.edit-url').text(file.name);
+            $template.prop('id', 'uploaderFile' + id);
+            $template.data('file-id', id);
+
+            $('#files').prepend($template);
+        }
+
+        function setNotification(status, message) {
+            var $alert = $('div.alert');
+            $alert.addClass('alert-' + status);
+            $alert.find('.text').append('<p>' + message + '</p>');
+            $alert.removeClass('hidden').fadeIn();
+        }
+
+        function setStatus(id, status, message) {
+            $('#uploaderFile' + id).find('span').html(message).prop('class', 'status text-' + status);
+        }
+
+        function setImage(id, path) {
+            $('#uploaderFile' + id).find('canvas').css('background-image', "url('" + path + "')");
+        }
+
+        function setEditUrl(id, url) {
+            $('#uploaderFile' + id).find('a.edit-url').attr('href', url);
+        }
+
+        function setProgress(id, percent, color, active) {
+            color = (typeof color === 'undefined' ? false : color);
+            active = (typeof active === 'undefined' ? true : active);
+
+            var bar = $('#uploaderFile' + id).find('div.progress-bar');
+
+            bar.width(percent + '%').attr('aria-valuenow', percent);
+            bar.toggleClass('progress-bar-striped progress-bar-animated', active);
+
+            if (percent === 0) {
+                bar.html('');
+            } else {
+                bar.html(percent + '%');
+            }
+
+            if (color !== false) {
+                bar.removeClass('bg-success bg-info bg-warning bg-danger');
+                bar.addClass('bg-' + color);
+            }
+        }
+    </script>
+
+    <script type="text/html" id="files-template">
+        <li class="list-group-item">
+            <div class="media-body mb-1">
+                <div class="col-md-2 image-wrapper">
+                    <canvas class="file-image"></canvas>
+                </div>
+                <div class="col-md-10">
+                    <p class="mb-2">
+                        <strong>
+                            <a class="edit-url" href="#"></a>
+                        </strong> - {{ 'status'|trans({}, 'SonataMultiUploadBundle') }}:
+                        <span class="text-muted">{{ 'waiting'|trans({}, 'SonataMultiUploadBundle') }}</span>
+                    </p>
+                    <div class="progress mb-2">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                             role="progressbar"
+                             aria-valuenow="0"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+{% endblock %}
+
+{% block form %}
+{% endblock %}

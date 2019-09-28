@@ -6,4 +6,4 @@ sonata_admin:
         extra_javascripts:
             - bundles/sonatamultiupload/dist/sonata-multiupload.js
 sonata_multi_upload:
-    redirect_to: 'admin_sonata_media_media_create_gallery'
+    #redirect_to: 'admin_sonata_media_media_create_gallery'
