@@ -20,7 +20,7 @@ class AutomovilesController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator)
     {
         $form = $this->createForm(SearchType::class);
-        $automoviles = $entityManager->getRepository(Automovil::class)->findBy([], ['id' => 'DESC']);
+        $automoviles = $entityManager->getRepository(Automovil::class)->getDisponiblesReservados();
         $content = $entityManager->getRepository(ListadoAutomovil::class)->findOneBy(['id' => 1]);
         // pagination
         $paginated = $paginator->paginate(

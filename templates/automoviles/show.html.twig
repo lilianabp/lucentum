@@ -51,12 +51,12 @@
                         </ul>
                         <div class="heading-car-2">
                             <h3>{{ automovil.marca }} {{ automovil.modelo }}</h3>
-                            <div class="price-location"><span class="car-price">€{{ automovil.precio }}</span> <span class="rent">En Venta</span></div>
+                            <div class="price-location"><span class="car-price">€{{ automovil.precio }}</span> <span class="rent">{{ automovil.estado }}</span></div>
                         </div>
                     </div>
                     <!-- Advanced search start -->
                     <div class="widget-2 advanced-search bg-grea-2 d-lg-none d-xl-none">
-                        <h3 class="sidebar-title">Reserva este automóvil</h3>
+                        <h3 class="sidebar-title">DATOS DEL VEHICULO</h3>
                         <ul>
                             <li>
                                 <span>Marca</span>{{ automovil.marca }}
@@ -169,7 +169,7 @@
                 <div class="sidebar-right">
                     <!-- Advanced search start -->
                     <div class="widget advanced-search d-none d-xl-block d-lg-block">
-                         <h3 class="sidebar-title">Reserva este automóvil</h3>
+                         <h3 class="sidebar-title">DATOS DEL VEHICULO</h3>
                         <ul>
                             <li>
                                 <span>Marca</span>{{ automovil.marca }}

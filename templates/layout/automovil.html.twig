@@ -1,16 +1,17 @@
- <div class="car-box">
+<a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}" class="car-img">
+   <div class="car-box">
     <div class="car-thumbnail">
-        <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}" class="car-img">
-            {% if automovil.destacado %}
-                <div class="tag">Destacado</div>
-            {% endif %}
-            <div class="price-box">€{{ automovil.precio }}</div>
-            {% if automovil.imagenDestacada %}
-                <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
-            {% else %}
-                <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
-            {% endif %}
-        </a>
+        {% if automovil.destacado %}
+            <div class="tag">Destacado</div>
+        {% endif %}
+        <div class="price-box">€{{ automovil.precio }}</div>
+        
+        {% if automovil.imagenDestacada %}
+            <img class="d-block w-100" src="{% path automovil.imagenDestacada, 'reference' %}" alt="car">
+        {% else %}
+            <img class="d-block w-100" src="http://placehold.it/350x233" alt="car">
+        {% endif %}
+        
     </div>
     <div class="detail">
         <h1 class="title">
@@ -45,3 +46,4 @@
         </ul>
     </div>
 </div>
+</a>

@@ -62,8 +62,8 @@ class AutomovilRepository extends ServiceEntityRepository
                ->setParameter(':max_price', $query['max_price']);
         }
 
-        $qb->andWhere('a.estado = :estado')
-            ->setParameter(':estado', 3)
+        $qb->andWhere('a.estado != :estado')
+            ->setParameter(':estado', 1)
             ->andWhere('a.activo = :activo')
             ->setParameter(':activo', 1);
 
@@ -85,13 +85,24 @@ class AutomovilRepository extends ServiceEntityRepository
             ->setParameter('oferta', 1);
         }
         
-        $qb->andWhere('a.estado = :estado')
-            ->setParameter(':estado', 3)
+        $qb->andWhere('a.estado != :estado')
+            ->setParameter(':estado', 1)
             ->andWhere('a.activo = :activo')
             ->setParameter(':activo', 1);
 
         return $qb->getQuery()
                 ->getResult()
+        ;
+    }
+
+    public function getDisponiblesReservados()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.estado != :estado')
+            ->setParameter('estado', 1)
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult()
         ;
     }
     

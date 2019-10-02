@@ -2823,7 +2823,7 @@ footer {
 
 /** Recent posts start **/
 .recent-posts .media img {
-    width: 60px;
+    width: auto;
     border-radius: 2px;
 }
 
@@ -4813,6 +4813,7 @@ footer {
     font-size: 12px;
     font-weight: 600;
     margin-right: 5px;
+    margin-left: 15px;
     background: #fff;
 }
 
