@@ -6,7 +6,7 @@
         {% set combustible = request.combustible %}
         {% set cambio = request.cambio %}
         {% set anio = request.anio %}
-        {% if request.max_price is defined %}{% set max_price = request.max_price %}{% else %}{% set max_price = '15000' %}{% endif %}
+        {% if request.max_price is defined %}{% set max_price = request.max_price %}{% else %}{% set max_price = '500000' %}{% endif %}
         {% if request.oferta is defined %}{% set oferta = request.oferta %}{% else %}{% set oferta = 0 %}{% endif %}
         {{ form_start(form, {'action': path('buscarmiautomovil'), 'method': 'POST'}) }}
         <div class="form-group">
@@ -28,7 +28,7 @@
 
         <div class="range-slider">
             <label>Precio</label>
-            <div data-min="0" {%if max_price is not empty %}data-max="{{ max_price }}"{% else %}data-max="15000"{% endif %}  data-min-name="min_price" data-max-name="search[max_price]" data-unit="€" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+            <div data-min="0" {%if max_price is not empty %}data-max="{{ max_price }}"{% else %}data-max="500000"{% endif %}  data-min-name="min_price" data-max-name="search[max_price]" data-unit="€" class="range-slider-ui ui-slider" aria-disabled="false"></div>
             <div class="clearfix"></div>
         </div>
         <div class="checkbox checkbox-theme checkbox-circle">
@@ -58,7 +58,7 @@
 
         <div class="range-slider">
             <label>Precio</label>
-            <div data-min="0" data-max="15000" data-min-name="min_price" data-max-name="search[max_price]" data-unit="€" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+            <div data-min="0" data-max="50000" data-min-name="min_price" data-max-name="search[max_price]" data-unit="€" class="range-slider-ui ui-slider" aria-disabled="false"></div>
             <div class="clearfix"></div>
         </div>
         <div class="checkbox checkbox-theme checkbox-circle">

@@ -1,14 +1,14 @@
 {% for ultimo in ultimos %}
     <div class="media mb-4">
-        <a class="pr-3" href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}), 'id': ultimo.id }) }}">
+        <a class="pr-3" href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}">
             {% media ultimo.imagenDestacada, 'small' with {'class': 'media-object'} %}
         </a>
         <div class="media-body align-self-center">
             <h5>
-                <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}), 'id': ultimo.id }) }}">{{ ultimo.marca }} {{ ultimo.modelo }}</a>
+                <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}">{{ ultimo.marca }} {{ ultimo.modelo }}</a>
             </h5>
             <div class="listing-post-meta">
-                ${{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':''}), 'id': ultimo.id }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
+                ${{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
             </div>
         </div>
     </div>

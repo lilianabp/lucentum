@@ -1,4 +1,4 @@
-<a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}" class="car-img">
+<a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-':'_'}), 'id': automovil.id }) }}" class="car-img">
    <div class="car-box">
     <div class="car-thumbnail">
         {% if automovil.destacado %}
@@ -15,10 +15,10 @@
     </div>
     <div class="detail">
         <h1 class="title">
-            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{automovil.modelo}}</a>
+            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-':'_'}), 'id': automovil.id }) }}">{{ automovil.marca }} {{automovil.modelo}}</a>
         </h1>
         <div class="location">
-            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">
+            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-':'_'}), 'id': automovil.id }) }}">
                 <i class="flaticon-pin"></i>Ctra. de Agost, 128, 03690 San Vicente del Raspeig, Alicante
             </a>
         </div>

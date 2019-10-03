@@ -140,7 +140,7 @@ final class AutomovilAdmin extends AbstractAdmin
                 'mapped' =>false,
                 'required' => false,
                 'label' => 'Galería de imágenes ficha de Automóvil',
-                'help' => 'Actualice para guardar nuevas imágenes',
+                'help' => 'Las imágenes deben ser apaisadas u horizontales (1900x900). Actualice para guardar nuevas imágenes',
                 'multiple' => true
             ])
         ->end()

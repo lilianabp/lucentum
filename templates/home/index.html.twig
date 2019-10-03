@@ -129,7 +129,7 @@
                                         <div class="category-overlay">
                                             <div class="category-content">
                                                 <h3 class="category-title">
-                                                    <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                    <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-': ''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                                 </h3>
                                                 <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                             </div>
@@ -148,7 +148,7 @@
                                     <div class="category-overlay">
                                         <div class="category-content">
                                             <h3 class="category-title">
-                                                <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-':'_'}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                             </h3>
                                             <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                         </div>
@@ -168,7 +168,7 @@
                                                 <div class="category-overlay">
                                                     <div class="category-content">
                                                         <h3 class="category-title">
-                                                            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':''}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
+                                                            <a href="{{ path('automovil', {'marca': automovil.marca|lower|replace({' ':''}), 'modelo': automovil.modelo|lower|replace({' ':'', '-':'_'}), 'id': automovil.id }) }}">{{ automovil.marca }} {{ automovil.modelo }}</a>
                                                         </h3>
                                                         <h5 class="category-subtitle">€{{ automovil.precio }}</h5>
                                                     </div>
