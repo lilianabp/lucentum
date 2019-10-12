@@ -4,8 +4,7 @@
 
 {% block content %}
 <!-- Sub banner start -->
-<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;
-    height: 365px;background-position: center center;background-repeat: no-repeat;position: relative;">
+<div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({% path content.banner, 'reference' %});background-size: cover;background-position: center center;background-repeat: no-repeat;position: relative;">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
             <h1>Automóvil</h1>
@@ -25,36 +24,31 @@
             <div class="col-lg-8 col-md-12 col-xs-12">
               
                 <div class="car-details-section">
-                    <div id="carDetailsSlider" class="carousel car-details-sliders slide slide-2">
-                        <!-- main slider carousel items -->
-                        <div class="carousel-inner">
-                            {% for data in medias %}
-                            <div class="{% if loop.index == 1 %}active{% endif %} item carousel-item" data-slide-number="{{ loop.index - 1 }}">
-                                <a class="fancybox" rel="gallery1" href="{{ asset('upload/media/automoviles/'~data) }}" title="{{ automovil }}">
-                                    <img src="{{ asset('upload/media/automoviles/'~data) }}" class="img-fluid" alt="slider-car">
-                                </a>
-                            </div>
-                            {% endfor %}
-                            
-                        </div>
-                        <!-- main slider carousel nav controls -->
-                        <ul class="carousel-indicators car-properties list-inline nav nav-justified">
-
-                            {% for data in medias %}
-                            <li class="list-inline-item {% if loop.index == 1 %}active{% endif %}">
-                                <a id="carousel-selector-{{ loop.index - 1 }}" {% if loop.index == 1 %}class="selected"{% endif %} data-slide-to="{{ loop.index - 1 }}" data-target="#carDetailsSlider">
-                                    <img src="{{ asset('upload/media/automoviles/'~data) }}" class="img-fluid" alt="small-car">
-                                </a>
-                            </li>
-                        
-                            {% endfor %}
-                        </ul>
-                        <div class="heading-car-2">
+                    <div class="heading-car-2">
                             <h3>{{ automovil.marca }} {{ automovil.modelo }}</h3>
                             <div class="price-location"><span class="car-price">€{{ automovil.precio }}</span> <span class="rent">{{ automovil.estado }}</span></div>
                         </div>
+
+                    <div id="automovilGallery" class="carousel slide" data-ride="carousel" style="margin-bottom: 20px">
+                      <div class="carousel-inner">
+                         {% for data in medias %}
+                            <div class="carousel-item  {% if loop.index == 1 %}active{% endif %}">
+                                <a class="fancybox" rel="gallery1" href="{{ asset('upload/media/automoviles/'~data) }}" title="{{ automovil }}">
+                                    <img class="d-block w-100" src="{{ asset('upload/media/automoviles/'~data) }}" alt="{{ automovil }}">
+                                </a>
+                            </div>
+                        {% endfor %}
+                      </div>
+                      <a class="carousel-control-prev" href="#automovilGallery" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#automovilGallery" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
                     </div>
-                    <!-- Advanced search start -->
+
                     <div class="widget-2 advanced-search bg-grea-2 d-lg-none d-xl-none">
                         <h3 class="sidebar-title">DATOS DEL VEHICULO</h3>
                         <ul>
@@ -243,5 +237,11 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 30px!important;
+    height: 30px!important;
+}
+</style>
 <!-- Properties details page end -->
 {% endblock %}

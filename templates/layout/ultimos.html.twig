@@ -8,7 +8,7 @@
                 <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}">{{ ultimo.marca }} {{ ultimo.modelo }}</a>
             </h5>
             <div class="listing-post-meta">
-                ${{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
+                €{{ ultimo.precio }} {% if ultimo.fechaAlta %}| <a href="{{ path('automovil', {'marca': ultimo.marca|lower|replace({' ':''}), 'modelo': ultimo.modelo|lower|replace({' ':'', '-':'_'}), 'id': ultimo.id }) }}"><i class="fa fa-calendar"></i>{{ ultimo.fechaAlta|date('M') }} {{ ultimo.fechaAlta|date('d') }}, {{ ultimo.fechaAlta|date('Y') }}</a>{% endif %}
             </div>
         </div>
     </div>
